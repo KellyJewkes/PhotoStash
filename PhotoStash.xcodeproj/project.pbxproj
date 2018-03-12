@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A8BAF6FB204F391B009CD9E7 /* AddToStashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BAF6FA204F391B009CD9E7 /* AddToStashViewController.swift */; };
+		A8BAF6FD204F3E1C009CD9E7 /* StashImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BAF6FC204F3E1C009CD9E7 /* StashImagesViewController.swift */; };
+		A8BAF6FF204F526E009CD9E7 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BAF6FE204F526E009CD9E7 /* Photo.swift */; };
+		A8BAF701204F5332009CD9E7 /* PhotoAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BAF700204F5332009CD9E7 /* PhotoAlbum.swift */; };
+		A8BAF703204F542A009CD9E7 /* PhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BAF702204F542A009CD9E7 /* PhotoController.swift */; };
+		A8BAF705204F543F009CD9E7 /* PhotoAlbumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BAF704204F543F009CD9E7 /* PhotoAlbumController.swift */; };
+		A8BAF70E2051B481009CD9E7 /* CameraPhotoHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BAF70D2051B481009CD9E7 /* CameraPhotoHandler.swift */; };
+		A8BAF7102056FBFA009CD9E7 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BAF70F2056FBFA009CD9E7 /* PhotoCollectionViewCell.swift */; };
 		A8E3F5AC204DB5920096974C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E3F5AB204DB5920096974C /* AppDelegate.swift */; };
 		A8E3F5B1204DB5920096974C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8E3F5AF204DB5920096974C /* Main.storyboard */; };
 		A8E3F5B3204DB5920096974C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8E3F5B2204DB5920096974C /* Assets.xcassets */; };
@@ -15,6 +23,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A8BAF6FA204F391B009CD9E7 /* AddToStashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToStashViewController.swift; sourceTree = "<group>"; };
+		A8BAF6FC204F3E1C009CD9E7 /* StashImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StashImagesViewController.swift; sourceTree = "<group>"; };
+		A8BAF6FE204F526E009CD9E7 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		A8BAF700204F5332009CD9E7 /* PhotoAlbum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbum.swift; sourceTree = "<group>"; };
+		A8BAF702204F542A009CD9E7 /* PhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoController.swift; sourceTree = "<group>"; };
+		A8BAF704204F543F009CD9E7 /* PhotoAlbumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbumController.swift; sourceTree = "<group>"; };
+		A8BAF70D2051B481009CD9E7 /* CameraPhotoHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPhotoHandler.swift; sourceTree = "<group>"; };
+		A8BAF70F2056FBFA009CD9E7 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		A8E3F5A8204DB5920096974C /* Photo Stash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Photo Stash.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8E3F5AB204DB5920096974C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8E3F5B0204DB5920096974C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -35,6 +51,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A8BAF706204F544E009CD9E7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A8BAF6FE204F526E009CD9E7 /* Photo.swift */,
+				A8BAF700204F5332009CD9E7 /* PhotoAlbum.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A8BAF707204F545D009CD9E7 /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A8BAF702204F542A009CD9E7 /* PhotoController.swift */,
+				A8BAF704204F543F009CD9E7 /* PhotoAlbumController.swift */,
+				A8BAF70D2051B481009CD9E7 /* CameraPhotoHandler.swift */,
+			);
+			path = "Model Controllers";
+			sourceTree = "<group>";
+		};
+		A8BAF708204F5470009CD9E7 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A8E3F5BE204DB8110096974C /* HomeViewController.swift */,
+				A8BAF6FC204F3E1C009CD9E7 /* StashImagesViewController.swift */,
+				A8BAF70F2056FBFA009CD9E7 /* PhotoCollectionViewCell.swift */,
+				A8BAF6FA204F391B009CD9E7 /* AddToStashViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
 		A8E3F59F204DB5920096974C = {
 			isa = PBXGroup;
 			children = (
@@ -55,7 +101,9 @@
 			isa = PBXGroup;
 			children = (
 				A8E3F5AF204DB5920096974C /* Main.storyboard */,
-				A8E3F5BE204DB8110096974C /* HomeViewController.swift */,
+				A8BAF708204F5470009CD9E7 /* View Controllers */,
+				A8BAF706204F544E009CD9E7 /* Models */,
+				A8BAF707204F545D009CD9E7 /* Model Controllers */,
 				A8E3F5BD204DB5AB0096974C /* Resources */,
 			);
 			path = PhotoStash;
@@ -144,8 +192,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8BAF70E2051B481009CD9E7 /* CameraPhotoHandler.swift in Sources */,
+				A8BAF7102056FBFA009CD9E7 /* PhotoCollectionViewCell.swift in Sources */,
 				A8E3F5AC204DB5920096974C /* AppDelegate.swift in Sources */,
+				A8BAF6FB204F391B009CD9E7 /* AddToStashViewController.swift in Sources */,
+				A8BAF701204F5332009CD9E7 /* PhotoAlbum.swift in Sources */,
+				A8BAF703204F542A009CD9E7 /* PhotoController.swift in Sources */,
+				A8BAF705204F543F009CD9E7 /* PhotoAlbumController.swift in Sources */,
+				A8BAF6FD204F3E1C009CD9E7 /* StashImagesViewController.swift in Sources */,
 				A8E3F5BF204DB8110096974C /* HomeViewController.swift in Sources */,
+				A8BAF6FF204F526E009CD9E7 /* Photo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,14 +1,14 @@
 //
-//  HomeViewController.swift
-//  PhotoHub
+//  AddToStashViewController.swift
+//  Photo Stash
 //
-//  Created by Kelly Jewkes on 3/5/18.
+//  Created by Kelly Jewkes on 3/6/18.
 //  Copyright © 2018 LightWing. All rights reserved.
 //
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class AddToStashViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
