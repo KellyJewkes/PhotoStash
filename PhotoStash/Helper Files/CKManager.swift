@@ -15,9 +15,10 @@ class CKManager {
         CKContainer.default().fetchUserRecordID(completionHandler: completion)
     }
     
+    //// note: this is set up in public DB. Need to change to shared? ////
     func save(user: User, completion: @escaping((CKRecord?, Error?) -> Void )) {
         let record = CKRecord(user: user)
-        CKContainer.default().sharedCloudDatabase.save(record, completionHandler: completion)
+        CKContainer.default().publicCloudDatabase.save(record, completionHandler: completion)
     }
     
 }

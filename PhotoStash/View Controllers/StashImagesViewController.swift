@@ -23,6 +23,7 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
     
    // MARK: - View Cycles
     override func viewDidLoad() {
+        navTitleImage()
         super.viewDidLoad()
         holderView.clipsToBounds = true
         holderView.layer.cornerRadius = 20
@@ -44,10 +45,35 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
     @IBAction func addImageButtonTapped(_ sender: Any) {
         CameraPhotoHandler.shared.showActionSheet(vc: self)
         CameraPhotoHandler.shared.imagePickedBlock = { (image) in
+            guard let photoAlbum = self.photoAlbum else {return}
+            PhotoController.create(photoWithImage: image, photoAlbum: photoAlbum)
+            self.collectionView.reloadData()
+            
+            
+            
             
         }
     }
     
+    func navTitleImage() {
+        let navController = navigationController!
+        
+        self.navigationItem.setHidesBackButton(true, animated: false)
+
+        let image = #imageLiteral(resourceName: "finalStache")
+        let imageView = UIImageView(image: image)
+        
+        let bannerWidth = navController.navigationBar.frame.size.width
+        let bannerHeight = navController.navigationBar.frame.size.height
+        
+        let bannerX = bannerWidth / 2 - image.size.width / 2
+        let bannerY = bannerHeight / 2 - image.size.height / 2
+        
+        imageView.frame = CGRect(x: bannerX, y: bannerY, width: bannerWidth * 2, height: bannerHeight * 2)
+        imageView.contentMode = .scaleAspectFit
+        
+        navigationItem.titleView = imageView
+    }
     
     //MARK: - Collection view functions
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

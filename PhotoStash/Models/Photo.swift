@@ -12,20 +12,20 @@ import CloudKit
 
 class Photo: Equatable {
     
-    init (name: String, image: UIImage) {
+    init (image: UIImage) {
         
-        self.name = name
+        
         self.image = image
 
     }
         
-    let name: String
+    
     let image: UIImage
     
     }
 
 
     func ==(lhs: Photo, rhs: Photo) -> Bool {
-        return lhs.name == rhs.name && lhs.image == rhs.image
+        return lhs.image == rhs.image
     
 }

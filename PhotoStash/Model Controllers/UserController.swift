@@ -41,7 +41,7 @@ class UserController {
                 if let error = error {
                     print("Error saving new user \(error.localizedDescription)")
                 } else {
-                    print("Save successfully!!! \(record!.recordID)")
+                    print("Save successful!!! \(record!.recordID)")
                     self.user = newUser
                 }
             })

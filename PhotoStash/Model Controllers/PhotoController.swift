@@ -15,8 +15,8 @@ class PhotoController {
     
     var photos = [Photo]()
     
-    static func create(photoWithName name: String, image: UIImage, photoAlbum: PhotoAlbum) {
-        let photo = Photo(name: name, image: image)
+    static func create(photoWithImage image: UIImage, photoAlbum: PhotoAlbum) {
+        let photo = Photo(image: image)
         PhotoAlbumController.shared.add(photo: photo, toPhotoAlbum: photoAlbum)
         
     }
