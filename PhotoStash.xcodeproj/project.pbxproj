@@ -10,6 +10,8 @@
 		A8A4955420571158009AF88F /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8A4955320571158009AF88F /* CloudKit.framework */; };
 		A8A495562057166B009AF88F /* CKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A495552057166B009AF88F /* CKManager.swift */; };
 		A8A4957A205776B7009AF88F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A49579205776B7009AF88F /* SignUpViewController.swift */; };
+		A8A4957D20582B95009AF88F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A4957C20582B95009AF88F /* User.swift */; };
+		A8A4957F20582BA4009AF88F /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A4957E20582BA4009AF88F /* UserController.swift */; };
 		A8BAF6FD204F3E1C009CD9E7 /* StashImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BAF6FC204F3E1C009CD9E7 /* StashImagesViewController.swift */; };
 		A8BAF6FF204F526E009CD9E7 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BAF6FE204F526E009CD9E7 /* Photo.swift */; };
 		A8BAF701204F5332009CD9E7 /* PhotoAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BAF700204F5332009CD9E7 /* PhotoAlbum.swift */; };
@@ -29,6 +31,8 @@
 		A8A4955320571158009AF88F /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		A8A495552057166B009AF88F /* CKManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKManager.swift; sourceTree = "<group>"; };
 		A8A49579205776B7009AF88F /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		A8A4957C20582B95009AF88F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		A8A4957E20582BA4009AF88F /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		A8BAF6FC204F3E1C009CD9E7 /* StashImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StashImagesViewController.swift; sourceTree = "<group>"; };
 		A8BAF6FE204F526E009CD9E7 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		A8BAF700204F5332009CD9E7 /* PhotoAlbum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbum.swift; sourceTree = "<group>"; };
@@ -78,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				A8BAF6FE204F526E009CD9E7 /* Photo.swift */,
+				A8A4957C20582B95009AF88F /* User.swift */,
 				A8BAF700204F5332009CD9E7 /* PhotoAlbum.swift */,
 			);
 			path = Models;
@@ -87,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				A8BAF702204F542A009CD9E7 /* PhotoController.swift */,
+				A8A4957E20582BA4009AF88F /* UserController.swift */,
 				A8BAF704204F543F009CD9E7 /* PhotoAlbumController.swift */,
 			);
 			path = "Model Controllers";
@@ -230,9 +236,11 @@
 				A8BAF7102056FBFA009CD9E7 /* PhotoCollectionViewCell.swift in Sources */,
 				A8E3F5AC204DB5920096974C /* AppDelegate.swift in Sources */,
 				A8BAF701204F5332009CD9E7 /* PhotoAlbum.swift in Sources */,
+				A8A4957F20582BA4009AF88F /* UserController.swift in Sources */,
 				A8BAF703204F542A009CD9E7 /* PhotoController.swift in Sources */,
 				A8A495562057166B009AF88F /* CKManager.swift in Sources */,
 				A8BAF705204F543F009CD9E7 /* PhotoAlbumController.swift in Sources */,
+				A8A4957D20582B95009AF88F /* User.swift in Sources */,
 				A8BAF6FD204F3E1C009CD9E7 /* StashImagesViewController.swift in Sources */,
 				A8E3F5BF204DB8110096974C /* HomeViewController.swift in Sources */,
 				A8BAF6FF204F526E009CD9E7 /* Photo.swift in Sources */,

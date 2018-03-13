@@ -330,7 +330,6 @@
         <image name="finalStache" width="5879" height="1692"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Bku-aC-x08"/>
         <segue reference="7E7-3r-p9Y"/>
     </inferredMetricsTieBreakers>
 </document>

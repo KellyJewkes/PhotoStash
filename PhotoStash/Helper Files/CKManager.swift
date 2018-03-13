@@ -11,7 +11,13 @@ import  CloudKit
 
 class CKManager {
     
-    let publicDB = CKContainer.default().publicCloudDatabase
+    func fetchUserRecordID(completion: @escaping((CKRecordID?, Error?) -> Void )) {
+        CKContainer.default().fetchUserRecordID(completionHandler: completion)
+    }
     
-    //func saveToCloud(
+    func save(user: User, completion: @escaping((CKRecord?, Error?) -> Void )) {
+        let record = CKRecord(user: user)
+        CKContainer.default().sharedCloudDatabase.save(record, completionHandler: completion)
+    }
+    
 }
