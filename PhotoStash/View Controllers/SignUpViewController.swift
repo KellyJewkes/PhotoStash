@@ -1,18 +1,22 @@
 //
-//  AddToStashViewController.swift
+//  SignUpViewController.swift
 //  Photo Stash
 //
-//  Created by Kelly Jewkes on 3/6/18.
+//  Created by Kelly Jewkes on 3/12/18.
 //  Copyright © 2018 LightWing. All rights reserved.
 //
 
 import UIKit
 
-class AddToStashViewController: UIViewController {
+class SignUpViewController: UIViewController {
+    
 
+    @IBOutlet weak var signInButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        signInButton.clipsToBounds = true
+        signInButton.layer.cornerRadius = 20
     }
 
 

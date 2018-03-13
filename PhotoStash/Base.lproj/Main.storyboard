@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FyB-sq-Cld">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fxp-hm-tqu">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -14,15 +14,12 @@
         <array key="Avenir.ttc">
             <string>Avenir-Book</string>
         </array>
-        <array key="AvenirNext.ttc">
-            <string>AvenirNext-Regular</string>
-        </array>
-        <array key="HelveticaNeue.ttc">
-            <string>HelveticaNeue</string>
+        <array key="Bodoni72-Book-SmallCaps.ttf">
+            <string>BodoniSvtyTwoSCITCTT-Book</string>
         </array>
     </customFonts>
     <scenes>
-        <!--Stash-it-->
+        <!--Home-->
         <scene sceneID="gXD-xk-y7n">
             <objects>
                 <viewController id="3I6-k4-eEQ" customClass="HomeViewController" customModule="Photo_Stash" customModuleProvider="target" sceneMemberID="viewController">
@@ -37,14 +34,14 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
                                 <state key="normal" title="Add New Event">
-                                    <color key="titleColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.0" green="0.98106676339999999" blue="0.57369142770000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="addNewStash:" destination="3I6-k4-eEQ" eventType="touchUpInside" id="u41-1Y-xDI"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4MG-ne-m9I">
-                                <rect key="frame" x="10" y="99" width="355" height="609"/>
+                                <rect key="frame" x="10" y="58.333333333333314" width="355" height="649.66666666666674"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
@@ -91,11 +88,11 @@
                             <constraint firstItem="4MG-ne-m9I" firstAttribute="leading" secondItem="8JG-LU-e3G" secondAttribute="leading" constant="10" id="d77-UC-ZcQ"/>
                             <constraint firstItem="0Mp-n6-qxA" firstAttribute="top" secondItem="4MG-ne-m9I" secondAttribute="bottom" constant="10" id="guK-c3-pZS"/>
                             <constraint firstItem="0Mp-n6-qxA" firstAttribute="leading" secondItem="8JG-LU-e3G" secondAttribute="leading" constant="88" id="wRF-ln-mVF"/>
-                            <constraint firstItem="4MG-ne-m9I" firstAttribute="height" secondItem="AiF-0X-m5I" secondAttribute="height" multiplier="0.75" id="zNf-dA-RF4"/>
+                            <constraint firstItem="4MG-ne-m9I" firstAttribute="height" secondItem="AiF-0X-m5I" secondAttribute="height" multiplier="0.8" id="zNf-dA-RF4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8JG-LU-e3G"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Stash-it" id="HsJ-se-cRm"/>
+                    <navigationItem key="navigationItem" title="Home" id="HsJ-se-cRm"/>
                     <connections>
                         <outlet property="tableView" destination="4MG-ne-m9I" id="slI-ZD-6R2"/>
                     </connections>
@@ -104,82 +101,75 @@
             </objects>
             <point key="canvasLocation" x="1853.5999999999999" y="-823.15270935960598"/>
         </scene>
-        <!--Add To Stash View Controller-->
-        <scene sceneID="dKw-MM-rVq">
+        <!--Sign Up View Controller-->
+        <scene sceneID="BlU-4b-4BQ">
             <objects>
-                <viewController id="gI3-4j-N0B" customClass="AddToStashViewController" customModule="Photo_Stash" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="GM5-1U-3jA">
+                <viewController id="fxp-hm-tqu" customClass="SignUpViewController" customModule="Photo_Stash" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="t4a-fj-mcI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uds-mb-9f6">
-                                <rect key="frame" x="10" y="119" width="355" height="609"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="5so-ug-N16">
+                                <rect key="frame" x="47" y="203" width="281" height="243"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="kE1-M1-2Ek">
-                                        <rect key="frame" x="10" y="184" width="335" height="241.66666666666663"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share your stash!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q2G-y0-TBF">
-                                                <rect key="frame" x="66.333333333333329" y="0.0" width="202.66666666666669" height="35.666666666666664"/>
-                                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="26"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Now that you've created your stash, you'll want to invite others to share it! Send a text below." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7N-zr-2g2">
-                                                <rect key="frame" x="0.0" y="55.666666666666686" width="335" height="130"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="130" id="s94-Qt-6Qb"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IDI-8f-8Ay">
-                                                <rect key="frame" x="75.666666666666686" y="205.66666666666669" width="184" height="36"/>
-                                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                                                <state key="normal" title="Text a link to your Stash!">
-                                                    <color key="titleColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="finalStache" translatesAutoresizingMaskIntoConstraints="NO" id="Kbi-h5-OZY">
+                                        <rect key="frame" x="0.0" y="0.0" width="281" height="100"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="photo stache" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mSx-zP-Y73">
+                                        <rect key="frame" x="27.666666666666686" y="110" width="226" height="53"/>
+                                        <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="44"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter username..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mBm-LV-Fmm">
+                                        <rect key="frame" x="0.0" y="173" width="281" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter e-mail..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xtx-jA-7M9">
+                                        <rect key="frame" x="0.0" y="213" width="281" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="kE1-M1-2Ek" firstAttribute="centerX" secondItem="Uds-mb-9f6" secondAttribute="centerX" id="2iK-Iy-vrG"/>
-                                    <constraint firstAttribute="trailing" secondItem="kE1-M1-2Ek" secondAttribute="trailing" constant="10" id="9RC-sY-WrR"/>
-                                    <constraint firstItem="kE1-M1-2Ek" firstAttribute="leading" secondItem="Uds-mb-9f6" secondAttribute="leading" constant="10" id="UBs-Pf-M8r"/>
-                                    <constraint firstItem="kE1-M1-2Ek" firstAttribute="centerY" secondItem="Uds-mb-9f6" secondAttribute="centerY" id="jON-tG-0er"/>
+                                    <constraint firstItem="Xtx-jA-7M9" firstAttribute="width" secondItem="5so-ug-N16" secondAttribute="width" id="I5t-Wy-PWt"/>
+                                    <constraint firstItem="mBm-LV-Fmm" firstAttribute="width" secondItem="5so-ug-N16" secondAttribute="width" id="RM0-B8-FHE"/>
                                 </constraints>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jQD-KU-zXX">
-                                <rect key="frame" x="88" y="738" width="199" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="bTK-jR-F59"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
-                                <state key="normal" title="Home">
-                                    <color key="titleColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WO6-xm-DC4">
+                                <rect key="frame" x="46.333333333333343" y="476" width="281.33333333333326" height="54"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="35"/>
+                                <state key="normal" title="sign-up / log-in">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <segue destination="FyB-sq-Cld" kind="show" id="VII-Li-gxs"/>
+                                </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="o4w-GR-Q0R" firstAttribute="trailing" secondItem="jQD-KU-zXX" secondAttribute="trailing" constant="88" id="CEt-TW-caB"/>
-                            <constraint firstItem="Uds-mb-9f6" firstAttribute="height" secondItem="GM5-1U-3jA" secondAttribute="height" multiplier="0.75" id="EHZ-uU-0eE"/>
-                            <constraint firstItem="o4w-GR-Q0R" firstAttribute="trailing" secondItem="Uds-mb-9f6" secondAttribute="trailing" constant="10" id="HGR-wP-dQh"/>
-                            <constraint firstItem="jQD-KU-zXX" firstAttribute="leading" secondItem="o4w-GR-Q0R" secondAttribute="leading" constant="88" id="XPq-qN-thE"/>
-                            <constraint firstItem="Uds-mb-9f6" firstAttribute="centerX" secondItem="GM5-1U-3jA" secondAttribute="centerX" id="aRg-og-hNw"/>
-                            <constraint firstItem="Uds-mb-9f6" firstAttribute="leading" secondItem="o4w-GR-Q0R" secondAttribute="leading" constant="10" id="lDW-zd-kM6"/>
-                            <constraint firstItem="jQD-KU-zXX" firstAttribute="top" secondItem="Uds-mb-9f6" secondAttribute="bottom" constant="10" id="pca-aq-OIl"/>
-                            <constraint firstItem="jQD-KU-zXX" firstAttribute="bottom" secondItem="o4w-GR-Q0R" secondAttribute="bottom" constant="10" id="rQY-J4-b6r"/>
+                            <constraint firstItem="5so-ug-N16" firstAttribute="height" secondItem="t4a-fj-mcI" secondAttribute="height" multiplier="0.3" id="3d0-ZL-PNv"/>
+                            <constraint firstItem="5so-ug-N16" firstAttribute="centerX" secondItem="t4a-fj-mcI" secondAttribute="centerX" id="9rd-ce-Pmi"/>
+                            <constraint firstItem="5so-ug-N16" firstAttribute="centerY" secondItem="t4a-fj-mcI" secondAttribute="centerY" multiplier="0.8" id="FNm-fL-0Tg"/>
+                            <constraint firstItem="WO6-xm-DC4" firstAttribute="centerX" secondItem="5so-ug-N16" secondAttribute="centerX" id="OXH-rC-IAZ"/>
+                            <constraint firstItem="WO6-xm-DC4" firstAttribute="width" secondItem="t4a-fj-mcI" secondAttribute="width" multiplier="0.75" id="be8-zc-D5D"/>
+                            <constraint firstItem="5so-ug-N16" firstAttribute="width" secondItem="t4a-fj-mcI" secondAttribute="width" multiplier="0.75" id="hWh-yh-qTr"/>
+                            <constraint firstItem="WO6-xm-DC4" firstAttribute="top" secondItem="Xtx-jA-7M9" secondAttribute="bottom" constant="30" id="sXW-uZ-jtP"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="o4w-GR-Q0R"/>
+                        <viewLayoutGuide key="safeArea" id="Jfs-yE-Ohd"/>
                     </view>
+                    <connections>
+                        <outlet property="signInButton" destination="WO6-xm-DC4" id="kcR-2g-qkY"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sLX-tx-djy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Ik-C7-Bb2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3430" y="-823"/>
+            <point key="canvasLocation" x="255" y="-823"/>
         </scene>
         <!--Stash Images View Controller-->
         <scene sceneID="oBZ-XH-ndY">
@@ -190,33 +180,34 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tjQ-ro-S2M">
-                                <rect key="frame" x="10" y="102" width="355" height="609"/>
+                                <rect key="frame" x="10" y="61.333333333333314" width="355" height="649.66666666666674"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Event Name)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pdy-9e-p8H">
-                                        <rect key="frame" x="10" y="18.333333333333329" width="335" height="24"/>
+                                        <rect key="frame" x="10" y="20.333333333333336" width="335" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" red="0.0" green="0.98106676339999999" blue="0.57369142770000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="IhW-4f-BPH">
-                                        <rect key="frame" x="10" y="52.333333333333343" width="335" height="496.66666666666663"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <rect key="frame" x="10" y="54.333333333333314" width="335" height="535.33333333333348"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6GE-Ka-Vep">
-                                            <size key="itemSize" width="50" height="50"/>
+                                            <size key="itemSize" width="112" height="112"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="newImageCell" id="VCq-6x-cRR">
-                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="newImageCell" id="VCq-6x-cRR" customClass="PhotoCollectionViewCell" customModule="Photo_Stash" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="112" height="112"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="112" height="112"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VBJ-eL-x2D">
-                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="112" height="112"/>
+                                                            <color key="backgroundColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </imageView>
                                                     </subviews>
                                                 </view>
@@ -226,6 +217,9 @@
                                                     <constraint firstAttribute="bottom" secondItem="VBJ-eL-x2D" secondAttribute="bottom" id="nMD-3Y-hr0"/>
                                                     <constraint firstItem="VBJ-eL-x2D" firstAttribute="top" secondItem="VCq-6x-cRR" secondAttribute="top" id="z2P-1m-fDd"/>
                                                 </constraints>
+                                                <connections>
+                                                    <outlet property="cellImage" destination="VBJ-eL-x2D" id="nw0-5e-AZA"/>
+                                                </connections>
                                             </collectionViewCell>
                                         </cells>
                                         <connections>
@@ -234,7 +228,7 @@
                                         </connections>
                                     </collectionView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="qd9-Pe-onw">
-                                        <rect key="frame" x="10" y="559" width="335" height="40"/>
+                                        <rect key="frame" x="10" y="599.66666666666663" width="335" height="40"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nXz-Tf-LzY">
                                                 <rect key="frame" x="0.0" y="0.0" width="162.66666666666666" height="40"/>
@@ -259,7 +253,7 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="qd9-Pe-onw" firstAttribute="top" secondItem="IhW-4f-BPH" secondAttribute="bottom" constant="10" id="9EW-A3-Ctn"/>
                                     <constraint firstItem="IhW-4f-BPH" firstAttribute="leading" secondItem="tjQ-ro-S2M" secondAttribute="leading" constant="10" id="BtU-ca-2D7"/>
@@ -281,7 +275,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
                                 <state key="normal" title="Home">
-                                    <color key="titleColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.0" green="0.98106676339999999" blue="0.57369142770000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="3I6-k4-eEQ" kind="show" id="7E7-3r-p9Y"/>
@@ -292,7 +286,7 @@
                         <constraints>
                             <constraint firstItem="tjQ-ro-S2M" firstAttribute="leading" secondItem="6zP-0a-Wg9" secondAttribute="leading" constant="10" id="Co5-qY-orK"/>
                             <constraint firstItem="6zP-0a-Wg9" firstAttribute="trailing" secondItem="rTz-GG-Qnu" secondAttribute="trailing" constant="88" id="Ydf-r8-xPB"/>
-                            <constraint firstItem="tjQ-ro-S2M" firstAttribute="height" secondItem="H11-R8-oWh" secondAttribute="height" multiplier="0.75" id="efg-II-TF1"/>
+                            <constraint firstItem="tjQ-ro-S2M" firstAttribute="height" secondItem="H11-R8-oWh" secondAttribute="height" multiplier="0.8" id="efg-II-TF1"/>
                             <constraint firstItem="tjQ-ro-S2M" firstAttribute="centerX" secondItem="H11-R8-oWh" secondAttribute="centerX" id="fqe-uj-uoI"/>
                             <constraint firstItem="rTz-GG-Qnu" firstAttribute="top" secondItem="tjQ-ro-S2M" secondAttribute="bottom" constant="11" id="fwz-3X-wQR"/>
                             <constraint firstItem="rTz-GG-Qnu" firstAttribute="leading" secondItem="6zP-0a-Wg9" secondAttribute="leading" constant="88" id="sfo-Kd-r4z"/>
@@ -304,6 +298,7 @@
                     <connections>
                         <outlet property="addImage" destination="mjF-e1-qK1" id="XBx-sq-24H"/>
                         <outlet property="collectionView" destination="IhW-4f-BPH" id="vSk-XH-eST"/>
+                        <outlet property="holderView" destination="tjQ-ro-S2M" id="2w5-ki-8V9"/>
                         <outlet property="homeButton" destination="rTz-GG-Qnu" id="a3p-vO-442"/>
                         <outlet property="stashNameLabel" destination="Pdy-9e-p8H" id="yyW-04-26m"/>
                     </connections>
@@ -331,7 +326,11 @@
             <point key="canvasLocation" x="1015" y="-823"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="finalStache" width="5879" height="1692"/>
+    </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Bku-aC-x08"/>
         <segue reference="7E7-3r-p9Y"/>
     </inferredMetricsTieBreakers>
 </document>

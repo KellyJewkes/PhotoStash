@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CloudKit
 
 class Photo: Equatable {
     
@@ -15,14 +16,15 @@ class Photo: Equatable {
         
         self.name = name
         self.image = image
+
     }
         
     let name: String
     let image: UIImage
     
-        
-        
     }
+
+
     func ==(lhs: Photo, rhs: Photo) -> Bool {
         return lhs.name == rhs.name && lhs.image == rhs.image
     

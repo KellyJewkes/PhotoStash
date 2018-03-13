@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A8BAF6FB204F391B009CD9E7 /* AddToStashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BAF6FA204F391B009CD9E7 /* AddToStashViewController.swift */; };
+		A8A4955420571158009AF88F /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8A4955320571158009AF88F /* CloudKit.framework */; };
+		A8A495562057166B009AF88F /* CKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A495552057166B009AF88F /* CKManager.swift */; };
+		A8A4957A205776B7009AF88F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A49579205776B7009AF88F /* SignUpViewController.swift */; };
 		A8BAF6FD204F3E1C009CD9E7 /* StashImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BAF6FC204F3E1C009CD9E7 /* StashImagesViewController.swift */; };
 		A8BAF6FF204F526E009CD9E7 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BAF6FE204F526E009CD9E7 /* Photo.swift */; };
 		A8BAF701204F5332009CD9E7 /* PhotoAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BAF700204F5332009CD9E7 /* PhotoAlbum.swift */; };
@@ -23,7 +25,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A8BAF6FA204F391B009CD9E7 /* AddToStashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToStashViewController.swift; sourceTree = "<group>"; };
+		A8A4955120571147009AF88F /* Photo Stash.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Photo Stash.entitlements"; sourceTree = "<group>"; };
+		A8A4955320571158009AF88F /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		A8A495552057166B009AF88F /* CKManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKManager.swift; sourceTree = "<group>"; };
+		A8A49579205776B7009AF88F /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		A8BAF6FC204F3E1C009CD9E7 /* StashImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StashImagesViewController.swift; sourceTree = "<group>"; };
 		A8BAF6FE204F526E009CD9E7 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		A8BAF700204F5332009CD9E7 /* PhotoAlbum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbum.swift; sourceTree = "<group>"; };
@@ -45,12 +50,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8A4955420571158009AF88F /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A8A4955220571158009AF88F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A8A4955320571158009AF88F /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A8A4957B20582258009AF88F /* Helper Files */ = {
+			isa = PBXGroup;
+			children = (
+				A8A495552057166B009AF88F /* CKManager.swift */,
+				A8BAF70D2051B481009CD9E7 /* CameraPhotoHandler.swift */,
+			);
+			path = "Helper Files";
+			sourceTree = "<group>";
+		};
 		A8BAF706204F544E009CD9E7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -65,7 +88,6 @@
 			children = (
 				A8BAF702204F542A009CD9E7 /* PhotoController.swift */,
 				A8BAF704204F543F009CD9E7 /* PhotoAlbumController.swift */,
-				A8BAF70D2051B481009CD9E7 /* CameraPhotoHandler.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -75,8 +97,8 @@
 			children = (
 				A8E3F5BE204DB8110096974C /* HomeViewController.swift */,
 				A8BAF6FC204F3E1C009CD9E7 /* StashImagesViewController.swift */,
+				A8A49579205776B7009AF88F /* SignUpViewController.swift */,
 				A8BAF70F2056FBFA009CD9E7 /* PhotoCollectionViewCell.swift */,
-				A8BAF6FA204F391B009CD9E7 /* AddToStashViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -84,8 +106,10 @@
 		A8E3F59F204DB5920096974C = {
 			isa = PBXGroup;
 			children = (
+				A8A4955120571147009AF88F /* Photo Stash.entitlements */,
 				A8E3F5AA204DB5920096974C /* PhotoStash */,
 				A8E3F5A9204DB5920096974C /* Products */,
+				A8A4955220571158009AF88F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				A8E3F5AF204DB5920096974C /* Main.storyboard */,
+				A8A4957B20582258009AF88F /* Helper Files */,
 				A8BAF708204F5470009CD9E7 /* View Controllers */,
 				A8BAF706204F544E009CD9E7 /* Models */,
 				A8BAF707204F545D009CD9E7 /* Model Controllers */,
@@ -153,6 +178,14 @@
 					A8E3F5A7204DB5920096974C = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -192,12 +225,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8A4957A205776B7009AF88F /* SignUpViewController.swift in Sources */,
 				A8BAF70E2051B481009CD9E7 /* CameraPhotoHandler.swift in Sources */,
 				A8BAF7102056FBFA009CD9E7 /* PhotoCollectionViewCell.swift in Sources */,
 				A8E3F5AC204DB5920096974C /* AppDelegate.swift in Sources */,
-				A8BAF6FB204F391B009CD9E7 /* AddToStashViewController.swift in Sources */,
 				A8BAF701204F5332009CD9E7 /* PhotoAlbum.swift in Sources */,
 				A8BAF703204F542A009CD9E7 /* PhotoController.swift in Sources */,
+				A8A495562057166B009AF88F /* CKManager.swift in Sources */,
 				A8BAF705204F543F009CD9E7 /* PhotoAlbumController.swift in Sources */,
 				A8BAF6FD204F3E1C009CD9E7 /* StashImagesViewController.swift in Sources */,
 				A8E3F5BF204DB8110096974C /* HomeViewController.swift in Sources */,
@@ -338,6 +372,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Photo Stash.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C6QDPVPNA2;
 				INFOPLIST_FILE = "$(SRCROOT)/PhotoStash/Resources/Info.plist";
@@ -353,6 +388,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Photo Stash.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C6QDPVPNA2;
 				INFOPLIST_FILE = "$(SRCROOT)/PhotoStash/Resources/Info.plist";
