@@ -26,6 +26,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.setHidesBackButton(true, animated: false)
+        
+    }
+    
     // MARK: - App Title Image
     func navTitleImage() {
         let navController = navigationController!

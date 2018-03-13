@@ -32,6 +32,10 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
         self.navigationController?.navigationBar.shadowImage = UIImage()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.setHidesBackButton(true, animated: false)
+    }
     
     //MARK: - Invite & share button
     @IBAction func inviteButtonTapped(_ sender: Any) {

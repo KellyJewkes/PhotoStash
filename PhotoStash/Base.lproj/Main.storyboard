@@ -84,6 +84,7 @@
                             <constraint firstItem="4MG-ne-m9I" firstAttribute="centerX" secondItem="AiF-0X-m5I" secondAttribute="centerX" id="6iA-kq-jFz"/>
                             <constraint firstItem="8JG-LU-e3G" firstAttribute="bottom" secondItem="0Mp-n6-qxA" secondAttribute="bottom" id="JbL-Z3-SR9"/>
                             <constraint firstItem="8JG-LU-e3G" firstAttribute="trailing" secondItem="4MG-ne-m9I" secondAttribute="trailing" constant="8" id="W8C-J9-fGh"/>
+                            <constraint firstItem="4MG-ne-m9I" firstAttribute="top" secondItem="8JG-LU-e3G" secondAttribute="top" constant="21" id="Xqb-Uo-xAe"/>
                             <constraint firstItem="8JG-LU-e3G" firstAttribute="trailing" secondItem="0Mp-n6-qxA" secondAttribute="trailing" constant="88" id="Ywf-1K-82g"/>
                             <constraint firstItem="4MG-ne-m9I" firstAttribute="leading" secondItem="8JG-LU-e3G" secondAttribute="leading" constant="8" id="d77-UC-ZcQ"/>
                             <constraint firstItem="0Mp-n6-qxA" firstAttribute="top" secondItem="4MG-ne-m9I" secondAttribute="bottom" constant="10" id="guK-c3-pZS"/>
@@ -333,6 +334,6 @@
         <image name="finalStache" width="5879" height="1692"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7E7-3r-p9Y"/>
+        <segue reference="0SG-Ge-vDS"/>
     </inferredMetricsTieBreakers>
 </document>
