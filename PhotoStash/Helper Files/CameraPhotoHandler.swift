@@ -17,9 +17,8 @@ class CameraPhotoHandler: NSObject {
     
     var imagePickedBlock: ((UIImage) -> Void)?
     
-    
+    // MARK: - to access camera
     func useCamera() {
-        
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             let myPickerController = UIImagePickerController()
             myPickerController.delegate = self
@@ -28,6 +27,7 @@ class CameraPhotoHandler: NSObject {
         }
     }
     
+    // MARK: - to access photo library
     func usePhotoLibrary() {
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
             let myPickerController = UIImagePickerController()
@@ -52,9 +52,7 @@ class CameraPhotoHandler: NSObject {
         cameraPhotoActionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
         vc.present(cameraPhotoActionSheet, animated: true, completion: nil)
-        
     }
-    
 }
 
 extension CameraPhotoHandler: UIImagePickerControllerDelegate, UINavigationControllerDelegate {

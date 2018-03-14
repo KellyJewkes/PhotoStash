@@ -11,8 +11,10 @@ import UIKit
 class PhotoCollectionViewCell: UICollectionViewCell {
     
     
-    @IBOutlet weak var cellImage: UIImageView!
+    @IBOutlet weak var cellButton: UIButton!
     
+    @IBAction func cellButtonTapped(_ sender: Any) {
+    }
     
 }
 

@@ -49,16 +49,17 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
     @IBAction func addImageButtonTapped(_ sender: Any) {
         CameraPhotoHandler.shared.showActionSheet(vc: self)
         CameraPhotoHandler.shared.imagePickedBlock = { (image) in
+            let newPhoto = Photo(image: image)
             guard let photoAlbum = self.photoAlbum else {return}
-            PhotoController.create(photoWithImage: image, photoAlbum: photoAlbum)
-            self.collectionView.reloadData()
+            PhotoAlbumController.shared.add(photo: newPhoto, toPhotoAlbum: photoAlbum)
             
             
             
             
         }
+        self.collectionView.reloadData()
     }
-    
+    //MARK: - title image
     func navTitleImage() {
         let navController = navigationController!
         
@@ -86,7 +87,8 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "newImageCell", for: indexPath) as! PhotoCollectionViewCell
-        //cell.cellImage.image = PhotoController.shared.photos[indexPath.item]
+        let photo = PhotoController.shared.photos[indexPath.item]
+        cell.cellButton.imageView?.image = photo.image
          return cell
     }
 }
