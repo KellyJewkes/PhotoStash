@@ -105,8 +105,8 @@
 			children = (
 				A8A49579205776B7009AF88F /* SignUpViewController.swift */,
 				A8E3F5BE204DB8110096974C /* HomeViewController.swift */,
-				A80EC922205975C80019AB1B /* DetailImageViewController.swift */,
 				A8BAF6FC204F3E1C009CD9E7 /* StashImagesViewController.swift */,
+				A80EC922205975C80019AB1B /* DetailImageViewController.swift */,
 				A8BAF70F2056FBFA009CD9E7 /* PhotoCollectionViewCell.swift */,
 			);
 			path = "View Controllers";

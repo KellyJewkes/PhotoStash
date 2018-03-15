@@ -37,6 +37,7 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
         self.navigationItem.setHidesBackButton(true, animated: false)
     }
     
+    
     //MARK: - Invite & share button
     @IBAction func inviteButtonTapped(_ sender: Any) {
       let shareVC = UIActivityViewController(activityItems: ["link to this album"], applicationActivities: nil)
@@ -52,13 +53,32 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
             let newPhoto = Photo(image: image)
             guard let photoAlbum = self.photoAlbum else {return}
             PhotoAlbumController.shared.add(photo: newPhoto, toPhotoAlbum: photoAlbum)
-            
-            
-            
-            
+            self.collectionView.reloadData()
+            print("\(newPhoto)")
         }
-        self.collectionView.reloadData()
     }
+    func alert(){
+        
+        let alertController = UIAlertController(title: "Delete this album", message: "Warning! This con not be undone!", preferredStyle: .alert)
+        
+        let deleteAlbum = UIAlertAction(title: "DELETE", style: .destructive, handler:{(action: UIAlertAction)-> Void in
+            guard let photoAlbum = self.photoAlbum else {return}
+            PhotoAlbumController.shared.delete(photoAlbum: photoAlbum)
+            self.navigationController?.popViewController(animated: true)
+        })
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alertController.addAction(deleteAlbum)
+        alertController.addAction(cancel)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    @IBAction func deleteAlbum(_ sender: Any) {
+        alert()
+    }
+    
     //MARK: - title image
     func navTitleImage() {
         let navController = navigationController!
@@ -82,13 +102,23 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
     
     //MARK: - Collection view functions
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return PhotoController.shared.photos.count
+        return photoAlbum?.photos.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "newImageCell", for: indexPath) as! PhotoCollectionViewCell
-        let photo = PhotoController.shared.photos[indexPath.item]
-        cell.cellButton.imageView?.image = photo.image
-         return cell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "newImageCell", for: indexPath) as? PhotoCollectionViewCell else { return UICollectionViewCell()}
+        let photo = photoAlbum?.photos[indexPath.item]
+        cell.cellImage.image = photo?.image
+        return cell
+    }
+
+  
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDetailImageView",
+            let indexPath = collectionView.indexPath(for: UICollectionViewCell()) {
+            let detailPhoto = PhotoController.shared.photos[indexPath.item]
+            let destinationVC = segue.destination as? DetailImageViewController
+            destinationVC?.detailPhoto = detailPhoto
+        }
     }
 }

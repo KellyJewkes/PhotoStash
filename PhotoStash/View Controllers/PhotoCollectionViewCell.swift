@@ -10,10 +10,24 @@ import UIKit
 
 class PhotoCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var cellImage: UIImageView!
     
-    @IBOutlet weak var cellButton: UIButton!
+    
+
+    
+    var photo: Photo? {
+        didSet {
+            updateViews()
+        }
+
+    }
+    
+    func updateViews(){
+        cellImage.image = photo?.image
+    }
     
     @IBAction func cellButtonTapped(_ sender: Any) {
+        
     }
     
 }
