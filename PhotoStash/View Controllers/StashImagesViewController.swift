@@ -112,11 +112,10 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
         return cell
     }
 
-  
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toDetailImageView",
-            //let indexPath = collectionView.indexPathsForSelectedItems {
-            let indexPath = collectionView.indexPath(for: UICollectionViewCell()) {
+            let indexPath = collectionView.indexPathsForSelectedItems?.first {
             let detailPhoto = PhotoController.shared.photos[indexPath.item]
             let destinationVC = segue.destination as? DetailImageViewController
             destinationVC?.detailPhoto = detailPhoto
