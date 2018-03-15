@@ -57,7 +57,7 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
             print("\(newPhoto)")
         }
     }
-    func alert(){
+    func deleteAlert(){
         
         let alertController = UIAlertController(title: "Delete this album", message: "Warning! This con not be undone!", preferredStyle: .alert)
         
@@ -76,7 +76,7 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
     }
     
     @IBAction func deleteAlbum(_ sender: Any) {
-        alert()
+        deleteAlert()
     }
     
     //MARK: - title image
@@ -115,6 +115,7 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toDetailImageView",
+            //let indexPath = collectionView.indexPathsForSelectedItems {
             let indexPath = collectionView.indexPath(for: UICollectionViewCell()) {
             let detailPhoto = PhotoController.shared.photos[indexPath.item]
             let destinationVC = segue.destination as? DetailImageViewController

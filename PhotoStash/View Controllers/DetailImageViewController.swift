@@ -34,7 +34,7 @@ class DetailImageViewController: UIViewController {
 
    
     @IBAction func deleteButtonTapped(_ sender: Any) {
-        
+        guard let currentPhoto = detailPhoto else {return}
     }
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
@@ -42,6 +42,12 @@ class DetailImageViewController: UIViewController {
     }
     
     @IBAction func shareButtonTapped(_ sender: Any) {
+        guard let image = detailImageView.image else {return}
+        let photoToShare = [image]
+        let activityViewController = UIActivityViewController(activityItems: photoToShare, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        
+        self.present(activityViewController, animated: true, completion: nil)
         
     }
     

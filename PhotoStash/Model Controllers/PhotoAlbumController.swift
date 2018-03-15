@@ -30,7 +30,7 @@ class PhotoAlbumController {
         photoAlbum.photos.append(photo)
     }
     
-    func remove(photo: Photo, fromPhotAlbum photoAlbum: PhotoAlbum) {
+    func remove(photo: Photo, fromPhotoAlbum photoAlbum: PhotoAlbum) {
         guard let index = photoAlbum.photos.index(of: photo) else {return}
         photoAlbum.photos.remove(at: index)
     }
