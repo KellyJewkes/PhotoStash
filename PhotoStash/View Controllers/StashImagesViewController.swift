@@ -111,6 +111,11 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
         cell.cellImage.image = photo?.image
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        
+    }
 
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

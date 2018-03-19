@@ -46,7 +46,7 @@
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="StashNameCell" textLabel="XLf-oA-vTK" style="IBUITableViewCellStyleDefault" id="Y2U-2r-jPQ">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="StashNameCell" textLabel="XLf-oA-vTK" detailTextLabel="XI6-oc-8IN" style="IBUITableViewCellStyleValue1" id="Y2U-2r-jPQ">
                                         <rect key="frame" x="0.0" y="28" width="359" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Y2U-2r-jPQ" id="xHq-67-3RF">
@@ -54,10 +54,17 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XLf-oA-vTK">
-                                                    <rect key="frame" x="15" y="0.0" width="329" height="43.666666666666664"/>
+                                                    <rect key="frame" x="15" y="12.999999999999998" width="33.333333333333336" height="20.333333333333332"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XI6-oc-8IN">
+                                                    <rect key="frame" x="291.33333333333331" y="8.9999999999999982" width="52.666666666666664" height="27.333333333333332"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -436,7 +443,7 @@
         <image name="finalStache" width="5879" height="1692"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cM7-2k-xtm"/>
+        <segue reference="Bku-aC-x08"/>
         <segue reference="o9p-h7-iun"/>
     </inferredMetricsTieBreakers>
 </document>
