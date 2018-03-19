@@ -31,7 +31,9 @@ class PhotoController {
     var photos = [Photo]() {
         didSet {
             DispatchQueue.main.async {
-                let nc = NotificationCenter.default
+                let notificationCenter = NotificationCenter.default
+                notificationCenter.photo(
+                
             }
         }
     }
@@ -45,7 +47,18 @@ class PhotoController {
         
         photos.append(photo)
         
-        CKManager.shared
+        CKManager.shared.saveRecord(photo.cloudKitRecord, database: publicDatabase) { (record, error) in
+            guard let record = record else {
+                if let error = error {
+                    NSLog("Error saving new Photo to iCloud \(error)")
+                    return
+                }
+            completion?(photo)
+                return
+            
+            }
+       photo.cloudKitRecordID = record.recordID
+        }
         
         
     }

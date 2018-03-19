@@ -61,7 +61,52 @@ class CKManager {
         }
     }
     
+    func deleteRecordWithID(_ recordID: CKRecordID, database: CKDatabase, completion: ((_ recordID: CKRecordID?, _ error: Error?) -> Void)?) {
+        
+        database.delete(withRecordID: recordID) { (recordID, error) in
+            completion?(recordID, error)
+        }
+    }
     
+    func deleteRecordsWithID(_ recordIDs: [CKRecordID], database: CKDatabase, completion: ((_ records: [CKRecord]?, _ recordIDs: [CKRecordID]?, _ error: Error?) -> Void)?) {
+        
+        let operation = CKModifyRecordsOperation(recordsToSave: nil, recordIDsToDelete: recordIDs)
+        operation.savePolicy = .ifServerRecordUnchanged
+        
+        operation.modifyRecordsCompletionBlock = completion
+        
+        database.add(operation)
+        
+    }
+    
+    func saveRecords(_ records: [CKRecord], database: CKDatabase, perRecordCompletion: ((_ record: CKRecord?, _ error: Error?) -> Void)?, completion: ((_ records: [CKRecord]?, _ error: Error?) -> Void)?) {
+        
+        modifyRecords(records, database: database, perRecordCompletion: perRecordCompletion, completion: completion)
+        
+    }
+    
+    func saveRecord(_ record: CKRecord, database: CKDatabase, completion: ((_ record: CKRecord?, _ error: Error?) -> Void)?) {
+        
+        modifyRecords([record], database: database, perRecordCompletion: completion, completion: nil)
+        
+    }
+    
+    func modifyRecords(_ records: [CKRecord], database: CKDatabase, perRecordCompletion: ((_ record: CKRecord?, _ error: Error?) -> Void)?, completion: ((_ records: [CKRecord]?, _ error: Error?) -> Void)?) {
+        
+        let operation = CKModifyRecordsOperation(recordsToSave: records, recordIDsToDelete: nil)
+        operation.savePolicy = .changedKeys
+        operation.queuePriority = .high
+        operation.qualityOfService = .userInteractive
+        operation.perRecordCompletionBlock = perRecordCompletion
+        operation.modifyRecordsCompletionBlock = { (records, recordIDs, error) -> Void in
+            completion?(records, error)
+            
+        }
+        
+        database.add(operation)
+    }
+    
+   
     func checkCloudKitAvailability() {
         
         CKContainer.default().accountStatus() {

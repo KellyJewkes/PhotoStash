@@ -50,7 +50,7 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
     @IBAction func addImageButtonTapped(_ sender: Any) {
         CameraPhotoHandler.shared.showActionSheet(vc: self)
         CameraPhotoHandler.shared.imagePickedBlock = { (image) in
-            let newPhoto = Photo(image: image)
+           PhotoController.sharedController.createPhotoWith(image: image, completion: <#T##((Photo) -> Void)?##((Photo) -> Void)?##(Photo) -> Void#>)
             guard let photoAlbum = self.photoAlbum else {return}
             PhotoAlbumController.shared.add(photo: newPhoto, toPhotoAlbum: photoAlbum)
             self.collectionView.reloadData()
@@ -113,7 +113,7 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        //self.performSegue(withIdentifier: Constants.toCommentFromFeedCollection, sender: self)
         
     }
 
@@ -121,7 +121,7 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toDetailImageView",
             let indexPath = collectionView.indexPathsForSelectedItems?.first {
-            let detailPhoto = PhotoController.shared.photos[indexPath.item]
+            let detailPhoto = PhotoController.sharedController.photos[indexPath.item]
             let destinationVC = segue.destination as? DetailImageViewController
             destinationVC?.detailPhoto = detailPhoto
         }
