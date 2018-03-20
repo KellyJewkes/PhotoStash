@@ -24,6 +24,11 @@ import CloudKit
 //
 //}
 
+extension PhotoController {
+    static let PhotoChangedNotification = Notification.Name("PhotosChangedNotification")
+}
+
+
 class PhotoController {
     
     let publicDatabase = CKContainer.default().publicCloudDatabase
@@ -31,12 +36,12 @@ class PhotoController {
     var photos = [Photo]() {
         didSet {
             DispatchQueue.main.async {
-                let notificationCenter = NotificationCenter.default
-                notificationCenter.photo(
-                
+                let nC = NotificationCenter.default
+                nC.post(name: PhotoController.PhotoChangedNotification, object: self)
             }
         }
     }
+    
     
     static let sharedController = PhotoController()
     
@@ -53,16 +58,12 @@ class PhotoController {
                     NSLog("Error saving new Photo to iCloud \(error)")
                     return
                 }
-            completion?(photo)
+                completion?(photo)
                 return
-            
             }
-       photo.cloudKitRecordID = record.recordID
+            photo.cloudKitRecordID = record.recordID
         }
-        
-        
     }
-    
 }
 
 

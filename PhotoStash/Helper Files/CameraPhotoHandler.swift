@@ -37,7 +37,7 @@ class CameraPhotoHandler: NSObject {
             currentVC?.present(myPickerController, animated: true, completion: nil)
         }
     }
-   
+    
     func showActionSheet(vc: UIViewController) {
         currentVC = vc
         let cameraPhotoActionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -49,7 +49,7 @@ class CameraPhotoHandler: NSObject {
         cameraPhotoActionSheet.addAction(UIAlertAction(title: "Your Photos", style: .default, handler: { (alert:UIAlertAction) -> Void in
             self.usePhotoLibrary()
         }))
-    
+        
         cameraPhotoActionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
         vc.present(cameraPhotoActionSheet, animated: true, completion: nil)
@@ -59,8 +59,8 @@ class CameraPhotoHandler: NSObject {
 extension CameraPhotoHandler: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         currentVC?.dismiss(animated: true, completion: nil)
-}
-
+    }
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             self.imagePickedBlock?(image)
@@ -68,9 +68,9 @@ extension CameraPhotoHandler: UIImagePickerControllerDelegate, UINavigationContr
         }else{
             print("Error in getting image")
         }
-  currentVC?.dismiss(animated: true, completion: nil)
+        currentVC?.dismiss(animated: true, completion: nil)
     }
-
+    
 }
 
 

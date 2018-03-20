@@ -39,11 +39,10 @@ class Photo {
     }
     
     var cloudKitRecordID: CKRecordID?
-
+    
     init(imageData: Data?) {
         self.imageData = imageData
     }
-    
     
     convenience required init?(record: CKRecord) {
         
@@ -56,8 +55,9 @@ class Photo {
         cloudKitRecordID = record.recordID
     }
     
+    
     var recordType: String {return Photo.typeKey }
-
+    
     var cloudKitRecord: CKRecord {
         
         // it is going to check if the cloudKitRecordID is already in the clud AND IF NOT if will create a new uuid! cool!
@@ -70,7 +70,7 @@ class Photo {
         // this record uses the temp URLfilepath of the image
         return record
     }
-
+    
     fileprivate var temporaryImageURL: URL {
         
         // create a temporary directory to send image url to CKAsset
@@ -83,7 +83,6 @@ class Photo {
         
         return fileURL
     }
-
 }
 
 

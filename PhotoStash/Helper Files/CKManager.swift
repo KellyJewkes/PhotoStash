@@ -106,7 +106,7 @@ class CKManager {
         database.add(operation)
     }
     
-   
+    
     func checkCloudKitAvailability() {
         
         CKContainer.default().accountStatus() {

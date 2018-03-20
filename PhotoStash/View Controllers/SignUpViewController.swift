@@ -27,7 +27,7 @@ class SignUpViewController: UIViewController {
             self.performSegue(withIdentifier: "SignInSegue", sender: nil)
         }
     }
-
+    
     @IBAction func signInTapped(_ sender: Any) {
         guard let username = usernameTextField.text, !username.isEmpty,
             let email = emailTextField.text, !email.isEmpty else {return}
@@ -35,5 +35,5 @@ class SignUpViewController: UIViewController {
         
     }
     
-
+    
 }

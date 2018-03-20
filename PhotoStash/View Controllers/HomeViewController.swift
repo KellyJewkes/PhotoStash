@@ -37,8 +37,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func navTitleImage() {
         let navController = navigationController!
         
-//        let backButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: navigationController, action: nil)
-//        navigationItem.leftBarButtonItem = backButton
+        //        let backButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: navigationController, action: nil)
+        //        navigationItem.leftBarButtonItem = backButton
         
         let image = #imageLiteral(resourceName: "finalStache")
         let imageView = UIImageView(image: image)

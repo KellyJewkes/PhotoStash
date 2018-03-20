@@ -33,7 +33,6 @@ class User {
         self.referenceToUser = referenceToUser
         self.ckRecordID = nil
     }
-    
 }
 
 extension CKRecord {

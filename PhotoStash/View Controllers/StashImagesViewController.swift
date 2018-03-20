@@ -21,7 +21,7 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
     @IBOutlet weak var holderView: UIView!
     
     
-   // MARK: - View Cycles
+    // MARK: - View Cycles
     override func viewDidLoad() {
         navTitleImage()
         super.viewDidLoad()
@@ -40,7 +40,7 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
     
     //MARK: - Invite & share button
     @IBAction func inviteButtonTapped(_ sender: Any) {
-      let shareVC = UIActivityViewController(activityItems: ["link to this album"], applicationActivities: nil)
+        let shareVC = UIActivityViewController(activityItems: ["link to this album"], applicationActivities: nil)
         shareVC.popoverPresentationController?.sourceView = self.view
         self.present(shareVC, animated: true, completion: nil)
     }
@@ -50,11 +50,18 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
     @IBAction func addImageButtonTapped(_ sender: Any) {
         CameraPhotoHandler.shared.showActionSheet(vc: self)
         CameraPhotoHandler.shared.imagePickedBlock = { (image) in
-           PhotoController.sharedController.createPhotoWith(image: image, completion: <#T##((Photo) -> Void)?##((Photo) -> Void)?##(Photo) -> Void#>)
-            guard let photoAlbum = self.photoAlbum else {return}
-            PhotoAlbumController.shared.add(photo: newPhoto, toPhotoAlbum: photoAlbum)
-            self.collectionView.reloadData()
-            print("\(newPhoto)")
+            let newPhoto = PhotoController.sharedController.createPhotoWith(image: image, completion: { (_) in
+                DispatchQueue.main.async {
+                    guard let photoAlbum = self.photoAlbum else {return}
+                    PhotoAlbumController.shared.add(photo: newPhoto, toPhotoAlbum: photoAlbum)
+                    self.collectionView.reloadData()
+                    
+                }
+                
+                
+                
+                
+            })
         }
     }
     func deleteAlert(){
@@ -84,7 +91,7 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
         let navController = navigationController!
         
         self.navigationItem.setHidesBackButton(true, animated: false)
-
+        
         let image = #imageLiteral(resourceName: "finalStache")
         let imageView = UIImageView(image: image)
         
@@ -116,8 +123,8 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
         //self.performSegue(withIdentifier: Constants.toCommentFromFeedCollection, sender: self)
         
     }
-
-
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toDetailImageView",
             let indexPath = collectionView.indexPathsForSelectedItems?.first {

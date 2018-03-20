@@ -31,8 +31,8 @@ class DetailImageViewController: UIViewController {
         super.viewWillAppear(animated)
         detailImageView.image = detailPhoto?.image
     }
-
-   
+    
+    
     @IBAction func deleteButtonTapped(_ sender: Any) {
         guard let currentPhoto = detailPhoto else {return}
     }
@@ -54,7 +54,7 @@ class DetailImageViewController: UIViewController {
     @IBAction func downloadButtonTapped(_ sender: Any) {
         guard let currentPhoto = detailImageView.image else {return}
         UIImageWriteToSavedPhotosAlbum(currentPhoto, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
-
+        
     }
     
     @objc func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer) {

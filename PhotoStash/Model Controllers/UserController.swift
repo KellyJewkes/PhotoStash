@@ -26,14 +26,14 @@ class UserController {
     private init() {}
     
     func createNewUser(username: String, email: String) {
-        ckManager.fetchUserRecordID { (recordID, error) in
+        ckManager.fetchLoggedInUserRecord { (recordID, error) in
             
             if let error = error {
                 print("error getting user ID \(error.localizedDescription)")
                 return
             }
             guard let recordID = recordID else {return}
-            let ckReference = CKReference(recordID: recordID, action: CKReferenceAction.none)
+            let ckReference = CKReference(recordID: recordID, action: CKReferenceAction)
             
             let newUser = User(username: username, email: email, referenceToUser: ckReference)
             
