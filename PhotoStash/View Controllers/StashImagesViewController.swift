@@ -50,18 +50,10 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
     @IBAction func addImageButtonTapped(_ sender: Any) {
         CameraPhotoHandler.shared.showActionSheet(vc: self)
         CameraPhotoHandler.shared.imagePickedBlock = { (image) in
-            let newPhoto = PhotoController.sharedController.createPhotoWith(image: image, completion: { (_) in
-                DispatchQueue.main.async {
-                    guard let photoAlbum = self.photoAlbum else {return}
-                    PhotoAlbumController.shared.add(photo: newPhoto, toPhotoAlbum: photoAlbum)
-                    self.collectionView.reloadData()
+            PhotoController.sharedController.createPhotoWith(image: image, completion: { (_) in
+               
                     
-                }
-                
-                
-                
-                
-            })
+                })
         }
     }
     func deleteAlert(){

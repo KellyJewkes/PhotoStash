@@ -31,7 +31,7 @@ class PhotoAlbumController {
     }
     
     func remove(photo: Photo, fromPhotoAlbum photoAlbum: PhotoAlbum) {
-        guard let index = photoAlbum.photos.inde
+        guard let index = photoAlbum.photos.index(of:photo) else {return}
         photoAlbum.photos.remove(at: index)
     }
     

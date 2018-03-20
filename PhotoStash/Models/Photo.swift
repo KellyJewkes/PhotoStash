@@ -24,7 +24,9 @@ import CloudKit
 //        return lhs.image == rhs.image
 //}
 
-class Photo {
+class Photo: Equatable {
+    
+    
     
     // reusable keys
     static let typeKey = "Photo"
@@ -85,10 +87,9 @@ class Photo {
     }
 }
 
+func ==(lhs: Photo, rhs: Photo) -> Bool {
+        return lhs.image == rhs.image
 
-
-
-
-
+}
 
 
