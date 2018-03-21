@@ -50,7 +50,13 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
     @IBAction func addImageButtonTapped(_ sender: Any) {
         CameraPhotoHandler.shared.showActionSheet(vc: self)
         CameraPhotoHandler.shared.imagePickedBlock = { (image) in
+//            var imageData: Data = UIImagePNGRepresentation(image)!
+//            var newPhoto: UIImage = UIImage(data: imageData)!
+//            let newPhoto2 = Photo(imageData: imageData)
+//            guard let photoAlbum = self.photoAlbum else {return}
             PhotoController.sharedController.createPhotoWith(image: image, completion: { (_) in
+                self.collectionView.reloadData()
+                
                
                     
                 })
@@ -62,7 +68,7 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
         
         let deleteAlbum = UIAlertAction(title: "DELETE", style: .destructive, handler:{(action: UIAlertAction)-> Void in
             guard let photoAlbum = self.photoAlbum else {return}
-            PhotoAlbumController.shared.delete(photoAlbum: photoAlbum)
+           // PhotoAlbumController.sharedController   .delete(photoAlbum: photoAlbum)
             self.navigationController?.popViewController(animated: true)
         })
         
@@ -101,12 +107,12 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
     
     //MARK: - Collection view functions
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photoAlbum?.photos.count ?? 0
+        return photoAlbum?.photos?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "newImageCell", for: indexPath) as? PhotoCollectionViewCell else { return UICollectionViewCell()}
-        let photo = photoAlbum?.photos[indexPath.item]
+        let photo = photoAlbum?.photos?[indexPath.item]
         cell.cellImage.image = photo?.image
         return cell
     }

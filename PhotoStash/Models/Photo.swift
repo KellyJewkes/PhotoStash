@@ -76,7 +76,6 @@ class Photo: Equatable {
     fileprivate var temporaryImageURL: URL {
         
         // create a temporary directory to send image url to CKAsset
-        
         let temporaryDirectory = NSTemporaryDirectory()
         let temporaryDirectoryURL = URL(fileURLWithPath: temporaryDirectory)
         let fileURL = temporaryDirectoryURL.appendingPathComponent(UUID().uuidString).appendingPathExtension("jpg")

@@ -74,8 +74,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         //save textfield
         let addStash = UIAlertAction(title: "Save", style: .default, handler: {(action: UIAlertAction) -> Void in
             let stashText = alertController.textFields?.first
-            guard let stashAsString = stashText?.text else {return}
-            PhotoAlbumController.shared.add(photoAlbumWithTitle: stashAsString)
+            guard let stacheAsString = stashText?.text else {return}
+            PhotoAlbumController.sharedController.createPhotoAlbumWith(title: stacheAsString, completion: { (_) in
+                
+            })
+
             self.tableView.reloadData()
         })
         
@@ -89,14 +92,14 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // MARK: - Table view functions
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return PhotoAlbumController.shared.photoAlbums.count
+        return PhotoAlbumController.sharedController.photoAlbums.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "StashNameCell", for: indexPath)
-        let photoAlbum = PhotoAlbumController.shared.photoAlbums[indexPath.row]
+        let photoAlbum = PhotoAlbumController.sharedController.photoAlbums[indexPath.row]
         cell.textLabel?.text = photoAlbum.title
-        cell.detailTextLabel?.text = String(PhotoAlbumController.shared.photoAlbums.index(of: photoAlbum)! + 1)
+        cell.detailTextLabel?.text = String(PhotoAlbumController.sharedController.photoAlbums.index(of: photoAlbum)! + 1)
         return cell
     }
     
@@ -105,7 +108,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toCurrentPhotoAlbum",
             let indexPath = tableView.indexPathForSelectedRow {
-            let photoAlbum = PhotoAlbumController.shared.photoAlbums[indexPath.row]
+            let photoAlbum = PhotoAlbumController.sharedController.photoAlbums[indexPath.row]
             let destinationVC = segue.destination as? StashImagesViewController
             destinationVC?.photoAlbum = photoAlbum
         }

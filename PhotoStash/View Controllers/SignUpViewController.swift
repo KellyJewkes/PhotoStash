@@ -31,7 +31,9 @@ class SignUpViewController: UIViewController {
     @IBAction func signInTapped(_ sender: Any) {
         guard let username = usernameTextField.text, !username.isEmpty,
             let email = emailTextField.text, !email.isEmpty else {return}
-     //   UserController.shared.createNewUser(username: username, email: email)
+        UserController.sharedController.createUserWith(userName: username, email: email) { (_) in
+        
+        }
         
     }
     
