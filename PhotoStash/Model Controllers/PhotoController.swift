@@ -46,7 +46,7 @@ class PhotoController {
     static let sharedController = PhotoController()
     
     func createPhotoWith(image: UIImage, completion: ((Photo) -> Void)?) {
-        guard let data = UIImageJPEGRepresentation(image, 0.8) else {return}
+        guard let data = UIImageJPEGRepresentation(image, 1.0) else {return}
         
         let photo = Photo(imageData: data)
         

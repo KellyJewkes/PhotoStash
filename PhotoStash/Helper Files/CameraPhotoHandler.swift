@@ -13,7 +13,7 @@ import CloudKit
 class CameraPhotoHandler: NSObject {
     
     static let shared = CameraPhotoHandler()
-    
+    let myPickerController = UIImagePickerController()
     fileprivate var currentVC: UIViewController?
     
     var imagePickedBlock: ((UIImage) -> Void)?
@@ -31,7 +31,6 @@ class CameraPhotoHandler: NSObject {
     // MARK: - to access photo library
     func usePhotoLibrary() {
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-            let myPickerController = UIImagePickerController()
             myPickerController.delegate = self
             myPickerController.sourceType = .photoLibrary
             currentVC?.present(myPickerController, animated: true, completion: nil)
@@ -68,7 +67,7 @@ extension CameraPhotoHandler: UIImagePickerControllerDelegate, UINavigationContr
         }else{
             print("Error in getting image")
         }
-        currentVC?.dismiss(animated: true, completion: nil)
+        myPickerController.dismiss(animated: true, completion: nil)
     }
     
 }

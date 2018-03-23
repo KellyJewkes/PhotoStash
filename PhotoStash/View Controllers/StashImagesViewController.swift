@@ -50,21 +50,23 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
     @IBAction func addImageButtonTapped(_ sender: Any) {
         CameraPhotoHandler.shared.showActionSheet(vc: self)
         CameraPhotoHandler.shared.imagePickedBlock = { (image) in
+    
+            
 //            var imageData: Data = UIImagePNGRepresentation(image)!
 //            var newPhoto: UIImage = UIImage(data: imageData)!
 //            let newPhoto2 = Photo(imageData: imageData)
 //            guard let photoAlbum = self.photoAlbum else {return}
+            
             PhotoController.sharedController.createPhotoWith(image: image, completion: { (_) in
+                
                 self.collectionView.reloadData()
                 
-               
-                    
                 })
         }
     }
     func deleteAlert(){
         
-        let alertController = UIAlertController(title: "Delete this album", message: "Warning! This con not be undone!", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Delete this album", message: "Warning! This can not be undone!", preferredStyle: .alert)
         
         let deleteAlbum = UIAlertAction(title: "DELETE", style: .destructive, handler:{(action: UIAlertAction)-> Void in
             guard let photoAlbum = self.photoAlbum else {return}
@@ -118,7 +120,7 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //self.performSegue(withIdentifier: Constants.toCommentFromFeedCollection, sender: self)
+        self.performSegue(withIdentifier: "toDetailImageView", sender: self)
         
     }
     

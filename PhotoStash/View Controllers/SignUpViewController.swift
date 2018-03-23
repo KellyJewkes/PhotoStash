@@ -17,25 +17,36 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(userCreated), name: User.customNotifications.userSet, object: nil)
+        
+        // NotificationCenter.default.addObserver(self, selector: #selector(userCreated), name: User.customNotifications.userSet, object: nil)
         signInButton.clipsToBounds = true
         signInButton.layer.cornerRadius = 20
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(segueToWelcomeVC), name: UserController.sharedController.currentUserWasSetNotification, object: nil)
     }
-    
-    @objc func userCreated() {
+    @objc func segueToWelcomeVC() {
         DispatchQueue.main.async {
-            self.performSegue(withIdentifier: "SignInSegue", sender: nil)
+            self.performSegue(withIdentifier: "SignInSegue", sender: self)
         }
     }
+    
+    
+    //    @objc func userCreated() {
+    //        DispatchQueue.main.async {
+    //            self.performSegue(withIdentifier: "SignInSegue", sender: nil)
+    //        }
+    //    }
     
     @IBAction func signInTapped(_ sender: Any) {
         guard let username = usernameTextField.text, !username.isEmpty,
             let email = emailTextField.text, !email.isEmpty else {return}
-        UserController.sharedController.createUserWith(userName: username, email: email) { (_) in
-        
+        UserController.sharedController.createUserWith(username: username, email: email) { (_) in
+            
         }
         
     }
     
-    
 }
+
+
+

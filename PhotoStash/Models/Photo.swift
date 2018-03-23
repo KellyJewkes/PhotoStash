@@ -10,28 +10,14 @@ import Foundation
 import UIKit
 import CloudKit
 
-//class Photo: Equatable {
-//
-//    init (image: UIImage) {
-//        self.image = image
-//    }
-//
-//    let image: UIImage
-//    }
-//
-//
-//    func ==(lhs: Photo, rhs: Photo) -> Bool {
-//        return lhs.image == rhs.image
-//}
-
-class Photo: Equatable {
-    
-    
+class Photo {
     
     // reusable keys
     static let typeKey = "Photo"
     static let imageDataKey = "imageData"
+    private let photoAlbumReferenceKey = "photoAlbumReference"
     
+    weak var photoAlbum: PhotoAlbum?
     let imageData: Data?
     
     // computed property for image from data
@@ -62,13 +48,18 @@ class Photo: Equatable {
     
     var cloudKitRecord: CKRecord {
         
-        // it is going to check if the cloudKitRecordID is already in the clud AND IF NOT if will create a new uuid! cool!
+        // it is going to check if the cloudKitRecordID is already in the clud AND IF NOT if will create a new uuid.
         let recordID = cloudKitRecordID ?? CKRecordID(recordName: UUID().uuidString)
         
         let record = CKRecord(recordType: recordType, recordID: recordID)
         
         record[Photo.imageDataKey] = CKAsset(fileURL: temporaryImageURL)
         
+        if let photoAlbum = photoAlbum,
+            let photoAlbumID = photoAlbum.cloudKitRecordID {
+            let photoAlbumReference = CKReference(recordID: photoAlbumID, action: .deleteSelf)
+            record.setObject(photoAlbumReference, forKey: photoAlbumReferenceKey)
+        }
         // this record uses the temp URLfilepath of the image
         return record
     }
@@ -86,9 +77,6 @@ class Photo: Equatable {
     }
 }
 
-func ==(lhs: Photo, rhs: Photo) -> Bool {
-        return lhs.image == rhs.image
 
-}
 
 

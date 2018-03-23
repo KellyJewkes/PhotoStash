@@ -9,82 +9,54 @@
 import Foundation
 import CloudKit
 
-//class UserController {
-
-//    static let shared = UserController()
-//
-//    lazy var ckManager: CKManager = {
-//        return CKManager()
-//    }()
-//    var user: User? {
-//        didSet {
-//            print("New User here.")
-//            NotificationCenter.default.post(name: User.customNotifications.userSet, object: nil)
-//        }
-//    }
-//
-//    private init() {}
-//
-//    func createNewUser(username: String, email: String) {
-//        ckManager.saveRecord(<#T##record: CKRecord##CKRecord#>, database: , completion: <#T##((CKRecord?, Error?) -> Void)?##((CKRecord?, Error?) -> Void)?##(CKRecord?, Error?) -> Void#>)
-//
-//            if let error = error {
-//                print("error getting user ID \(error.localizedDescription)")
-//                return
-//            }
-//            guard let recordID = recordID else {return}
-//            let ckReference = CKReference(recordID: recordID, action: CKReferenceAction)
-//
-//            let newUser = User(username: username, email: email, referenceToUser: ckReference)
-//
-//            self.ckManager.save(user: newUser, completion: { (record, error) in
-//                if let error = error {
-//                    print("Error saving new user \(error.localizedDescription)")
-//                } else {
-//                    print("Save successful!!! \(record!.recordID)")
-//                    self.user = newUser
-//                }
-//            })
-//        }
-//    }
-//}
 
 extension UserController {
-    static let userChangedNotification = Notification.Name("UserChangedNotification")
+    //static let userChangedNotification = Notification.Name("UserChangedNotification")
 }
 
 class UserController {
     
     let publicDatabase = CKContainer.default().publicCloudDatabase
     
-    var users = [User]() {
+    let currentUserWasSetNotification = Notification.Name("currentUserWasSet")
+    
+    var user: User? {
         didSet {
             DispatchQueue.main.async {
-                let nC = NotificationCenter.default
-                nC.post(name: UserController.userChangedNotification, object: self)
+                NotificationCenter.default.post(name: self.currentUserWasSetNotification, object: nil)
+                //let nC = NotificationCenter.default
+               // nC.post(name: UserController.userChangedNotification, object: self)
             }
         }
     }
     
     static let sharedController = UserController()
     
-    func createUserWith(userName: String, email: String, completion: ((User) -> Void)?) {
-        let user = User(username: userName, email: email)
-        users.append(user)
+    func createUserWith(username: String, email: String, completion: @escaping (_ success: Bool) -> Void) {
         
-        CKManager.shared.saveRecord(user.cloudKitRecord, database: publicDatabase) { (record, error) in
-            guard let record = record else {
-                if let error = error {
-                    NSLog("Error saving new user \(error)")
-                    return
-                }
-                completion?(user)
-                return
+        CKContainer.default().fetchUserRecordID { (appleUsersRecordID, error) in
+            guard let appleUsersRecordID = appleUsersRecordID else {return}
+            
+            let appleUserRef = CKReference(recordID: appleUsersRecordID, action: .deleteSelf)
+            
+            let user = User(username: username, email: email, appleUserRef: appleUserRef)
+            
+            let userRecord = CKRecord(user: user)
+            
+            CKContainer.default().publicCloudDatabase.save(userRecord){ (record, error) in
+                if let error = error { print("Error saving record\(error.localizedDescription)") }
+                
+                guard let record = record, let currentUser = User(cloudKitRecord: record) else
+                {completion(false) ; return }
+                
+                
+                self.user = currentUser
+                completion(true)
+                
             }
-            user.cloudKitRecordID = record.recordID
+            
         }
     }
 }
-
 
 

@@ -10,64 +10,74 @@ import Foundation
 import CloudKit
 import UIKit
 
-class User: Equatable {
+class User {
     
-    let username: String
-    let email: String
-   // let referenceToUser: CKReference
-    let ckRecordID: CKRecordID?
+    var username: String
+    var email: String
+    var photoAlbum: [PhotoAlbum] = []
+    let appleUserRef: CKReference?
+    
     
     enum CKKeys {
+        
         static let TypeKey = "User"
         static let usernameKey = "username"
         static let emailKey = "email"
-       // static let referenceToUserKey = "referenceToUser"
+        static let appleUserRefKey = "appleUserRef"
+        
     }
     
     enum customNotifications {
         static let userSet = Notification.Name("UserWasSet")
     }
-    
-    init(username: String, email: String) {
-        self.email = email
-        self.username = username
-        self.ckRecordID = nil
-       // self.referenceToUser = referenceToUser
-    }
-
     var cloudKitRecordID: CKRecordID?
     
-    //convenience required init?(record: CKRecord) {
-    //    cloudKitRecordID = record.recordID
-    //}
+    init(username: String, email: String, appleUserRef: CKReference) {
+        self.email = email
+        self.username = username
+        self.appleUserRef = appleUserRef
+       
+    }
+
+    
+    init?(cloudKitRecord: CKRecord) {
+        guard let username = cloudKitRecord[User.CKKeys.usernameKey] as? String,
+        let email = cloudKitRecord[User.CKKeys.emailKey] as? String,
+            let appleUserRef = cloudKitRecord[User.CKKeys.appleUserRefKey] as? CKReference else { return nil}
+    
+        self.username = username
+        self.email = email
+        self.appleUserRef = appleUserRef
+        self.cloudKitRecordID = cloudKitRecord.recordID
+    
+    }
 
     var recordType: String { return User.CKKeys.TypeKey }
     
-    var cloudKitRecord: CKRecord {
+    var cloudKitRecord: CKRecord? {
         let recordID = cloudKitRecordID ?? CKRecordID(recordName: UUID().uuidString)
         
         let record = CKRecord(recordType: recordType, recordID: recordID)
+        record.setValue(username, forKey: CKKeys.usernameKey)
+        record.setValue(email, forKey: CKKeys.emailKey)
         
         return record
     }
     
-    
 }
 
-func ==(lhs: User, rhs: User) -> Bool {
-    return lhs.username == rhs.username
-}
 
 extension CKRecord {
     convenience init(user: User) {
-        if let ckRecordID = user.ckRecordID {
-            self.init(recordType: User.CKKeys.TypeKey, recordID: ckRecordID)
-        } else {
-            self.init(recordType: User.CKKeys.TypeKey)
-        }
+        
+        let recordID = user.cloudKitRecordID ?? CKRecordID(recordName: UUID().uuidString)
+        
+            self.init(recordType: User.CKKeys.TypeKey, recordID: recordID)
+       
+        
         self.setObject(user.username as CKRecordValue, forKey: User.CKKeys.usernameKey)
         self.setObject(user.email as CKRecordValue, forKey: User.CKKeys.emailKey)
-      //  self.setObject(user.referenceToUser as CKRecordValue, forKey: User.CKKeys.referenceToUserKey)
+        self.setValue(user.appleUserRef, forKey: User.CKKeys.appleUserRefKey)
         
     }
 }

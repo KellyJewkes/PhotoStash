@@ -18,10 +18,13 @@ class PhotoAlbum: Equatable {
     //    }
     //
        var photos: [Photo]?
-    //   let title: String
     
     let title: String
     let ckRecordID: CKRecordID?
+    private let userReferenceKey = "userReference"
+    weak var user: User?
+    var users: [User] = []
+    
     
     enum CKKeys {
         static let typeKey = "PhotoAlbum"
@@ -52,6 +55,13 @@ class PhotoAlbum: Equatable {
         let recordID = cloudKitRecordID ?? CKRecordID(recordName: UUID().uuidString)
         
         let record = CKRecord(recordType: recordType, recordID: recordID)
+        record.setValue(title, forKey: CKKeys.titleKey)
+        
+      if let user = user,
+        let userID = user.cloudKitRecordID {
+        let userReference = CKReference(recordID: userID, action: .deleteSelf)
+        record.setObject(userReference, forKey: userReferenceKey)
+        }
         
         return record
         
@@ -72,7 +82,7 @@ func ==(lhs: PhotoAlbum, rhs: PhotoAlbum) -> Bool {
                 self.init(recordType: PhotoAlbum.CKKeys.typeKey)
             }
             self.setObject(photoAlbum.title as CKRecordValue, forKey: PhotoAlbum.CKKeys.titleKey)
-            //self.setObject(photoAlbum.reference as CKRecordValue, forKey: PhotoAlbum.CKKeys.referenceKey)
+            
             
         
 }

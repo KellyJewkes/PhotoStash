@@ -18,12 +18,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         CKContainer.default()
-        tableView.clipsToBounds = true
-        tableView.layer.cornerRadius = 20
+       // tableView.clipsToBounds = true
+       // tableView.layer.cornerRadius = 20
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         navTitleImage()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,11 +64,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     // MARK: - Alert function
     func addStashAlert(){
         
-        let alertController = UIAlertController(title: "Add a new Stash", message: "", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Add a new Stache", message: "", preferredStyle: .alert)
         
         //textfild
         alertController.addTextField { (textField) in
-            textField.placeholder = "Add new Stash..."
+            textField.placeholder = "Add a new Stache..."
         }
         //save textfield
         let addStash = UIAlertAction(title: "Save", style: .default, handler: {(action: UIAlertAction) -> Void in
