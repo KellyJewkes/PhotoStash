@@ -64,6 +64,8 @@ class PhotoController {
             photo.cloudKitRecordID = record.recordID
         }
     }
+
+
 }
 
 

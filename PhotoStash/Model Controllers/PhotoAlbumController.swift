@@ -15,7 +15,6 @@ import CloudKit
 //class PhotoAlbumController {
 //
 //
-//    var photoAlbums = [PhotoAlbum]()
 //
 //    static let shared = PhotoAlbumController()
 //
@@ -53,7 +52,9 @@ class PhotoAlbumController {
     
     let publicDatabase = CKContainer.default().publicCloudDatabase
     
-    var photoAlbums = [PhotoAlbum]() {
+    var photoAlbums: [PhotoAlbum] = []
+    
+    var photoAlbum: PhotoAlbum? {
         didSet {
             DispatchQueue.main.async {
                 let nC = NotificationCenter.default
@@ -63,20 +64,28 @@ class PhotoAlbumController {
     }
     
     
-    func createPhotoAlbumWith(title: String, completion: ((PhotoAlbum) -> Void)?) {
-        let photoAlbum = PhotoAlbum(title: title)
-        photoAlbums.append(photoAlbum)
+    func createPhotoAlbumWith(title: String, completion: @escaping (_ success: Bool) -> Void) {
         
-        CKManager.shared.saveRecord(photoAlbum.cloudKitRecord, database: publicDatabase) { (record, error) in
-            guard let record = record else {
-                if let error = error {
-                    NSLog("Error saving new photAlbum \(error)")
-                    return
-                }
-                completion?(photoAlbum)
-                return
+        CKContainer.default().fetchUserRecordID { (record, error) in
+            guard let record = record else {return}
+            
+            let userReference = CKReference(recordID: record, action: .deleteSelf)
+            
+            let photoAlbum = PhotoAlbum(title: title, userReference: userReference)
+            
+            let photoAlbumRecord = CKRecord(photoAlbum: photoAlbum)
+            
+            CKContainer.default().publicCloudDatabase.save(photoAlbumRecord){ (record, error) in
+                if let error = error { print("Error saving record \(error.localizedDescription)") }
+                
+                guard let record = record, let currentPhotoAlbum = PhotoAlbum(cloudKitRecord: record) else
+                {completion(false) ; return }
+                
+                //self.photoAlbum = currentPhotoAlbum
+                self.photoAlbums.append(currentPhotoAlbum)
+                print("break")
+                completion(true)
             }
-            photoAlbum.cloudKitRecordID = record.recordID
         }
     }
 }
@@ -85,6 +94,23 @@ class PhotoAlbumController {
 
 
 
+
+
+
+
+//        let photoAlbum = PhotoAlbum(title: <#T##String#>, userReference: <#T##CKReference#>)
+//        photoAlbums.append(photoAlbum)
+//
+//        CKManager.shared.saveRecord(photoAlbum.cloudKitRecord, database: publicDatabase) { (record, error) in
+//            guard let record = record else {
+//                if let error = error {
+//                    NSLog("Error saving new photAlbum \(error)")
+//                    return
+//                }
+//                completion(true)
+//                return
+//            }
+//            photoAlbum.cloudKitRecordID = record.recordID
 
 
 

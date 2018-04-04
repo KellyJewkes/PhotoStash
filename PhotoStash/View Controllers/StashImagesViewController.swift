@@ -70,7 +70,7 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
         
         let deleteAlbum = UIAlertAction(title: "DELETE", style: .destructive, handler:{(action: UIAlertAction)-> Void in
             guard let photoAlbum = self.photoAlbum else {return}
-           // PhotoAlbumController.sharedController   .delete(photoAlbum: photoAlbum)
+          //CKManager.
             self.navigationController?.popViewController(animated: true)
         })
         

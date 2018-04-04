@@ -57,7 +57,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBAction func addNewStash(_ sender: Any) {
         addStashAlert()
-        //self.tableView.reloadData()
+        self.tableView.reloadData()
     }
     
     
@@ -75,10 +75,15 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             let stashText = alertController.textFields?.first
             guard let stacheAsString = stashText?.text else {return}
             PhotoAlbumController.sharedController.createPhotoAlbumWith(title: stacheAsString, completion: { (_) in
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                    
+                }
                 
             })
-
-            self.tableView.reloadData()
+            
+            
+            print(PhotoAlbumController.sharedController.photoAlbums.count)
         })
         
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -98,7 +103,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "StashNameCell", for: indexPath)
         let photoAlbum = PhotoAlbumController.sharedController.photoAlbums[indexPath.row]
         cell.textLabel?.text = photoAlbum.title
-        cell.detailTextLabel?.text = String(PhotoAlbumController.sharedController.photoAlbums.index(of: photoAlbum)! + 1)
+        //cell.detailTextLabel?.text = "\(PhotoAlbumController.sharedController.photoAlbums.count)"
+            
+            //sharedController.photoAlbums.index(of: photoAlbum)! + 1)
         return cell
     }
     

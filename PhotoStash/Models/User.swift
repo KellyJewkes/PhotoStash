@@ -30,6 +30,7 @@ class User {
     enum customNotifications {
         static let userSet = Notification.Name("UserWasSet")
     }
+    
     var cloudKitRecordID: CKRecordID?
     
     init(username: String, email: String, appleUserRef: CKReference) {

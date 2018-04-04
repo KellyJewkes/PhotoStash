@@ -10,80 +10,73 @@ import Foundation
 import UIKit
 import CloudKit
 
-class PhotoAlbum: Equatable {
-    
-    //    init(title: String, photos: [Photo] = []) {
-    //        self.photos = photos
-    //        self.title = title
-    //    }
-    //
-       var photos: [Photo]?
+class PhotoAlbum {
     
     let title: String
-    let ckRecordID: CKRecordID?
-    private let userReferenceKey = "userReference"
+    let userReference: CKReference?
+    var photos: [Photo]?
     weak var user: User?
     var users: [User] = []
     
     
     enum CKKeys {
+        
         static let typeKey = "PhotoAlbum"
         static let titleKey = "title"
-      //  static let referenceKey = "reference"
+        static let userReferenceKey = "userReference"
     }
     
     enum customNotifications {
         static let photoAlbumSet = Notification.Name("PhotoAlbumWasSet")
     }
     
-    
     var cloudKitRecordID: CKRecordID?
     
-//    convenience required init?(record: CKRecord) {
-//        cloudKitRecordID = record.recordID
-//    }
-    
-    init(title: String) {
+    init(title: String, userReference: CKReference) {
         self.title = title
-      //  self.reference = reference
-        self.ckRecordID = nil
+        self.userReference = userReference
+    }
+    
+    init?(cloudKitRecord: CKRecord) {
+        guard let title = cloudKitRecord[PhotoAlbum.CKKeys.titleKey] as? String,
+            let userReference = cloudKitRecord[PhotoAlbum.CKKeys.userReferenceKey] as? CKReference else { return nil }
+        
+        self.title = title
+        self.userReference = userReference
+        self.cloudKitRecordID = cloudKitRecord.recordID
+        
+        
     }
     
     var recordType: String { return PhotoAlbum.CKKeys.typeKey }
     
     var cloudKitRecord: CKRecord {
+        
         let recordID = cloudKitRecordID ?? CKRecordID(recordName: UUID().uuidString)
         
         let record = CKRecord(recordType: recordType, recordID: recordID)
+        
         record.setValue(title, forKey: CKKeys.titleKey)
         
-      if let user = user,
-        let userID = user.cloudKitRecordID {
-        let userReference = CKReference(recordID: userID, action: .deleteSelf)
-        record.setObject(userReference, forKey: userReferenceKey)
-        }
         
         return record
         
     }
-    
-    
 }
 
-func ==(lhs: PhotoAlbum, rhs: PhotoAlbum) -> Bool {
-    return lhs.title == rhs.title
-}
-    
-    extension CKRecord {
-        convenience init(photoAlbum: PhotoAlbum) {
-            if let ckRecordID = photoAlbum.ckRecordID {
-                self.init(recordType: PhotoAlbum.CKKeys.typeKey, recordID:ckRecordID)
-            }else{
-                self.init(recordType: PhotoAlbum.CKKeys.typeKey)
-            }
-            self.setObject(photoAlbum.title as CKRecordValue, forKey: PhotoAlbum.CKKeys.titleKey)
-            
-            
+
+
+extension CKRecord {
+    convenience init(photoAlbum: PhotoAlbum) {
         
-}
+        let recordID = photoAlbum.cloudKitRecordID ?? CKRecordID(recordName: UUID().uuidString)
+        
+        self.init(recordType: PhotoAlbum.CKKeys.typeKey, recordID: recordID)
+        
+        self.setObject(photoAlbum.title as CKRecordValue, forKey: PhotoAlbum.CKKeys.titleKey)
+        self.setValue(photoAlbum.userReference, forKey: PhotoAlbum.CKKeys.userReferenceKey)
+        
+
+        
+    }
 }
