@@ -17,6 +17,7 @@ class Photo {
     static let imageDataKey = "imageData"
     private let photoAlbumReferenceKey = "photoAlbumReference"
     
+    
     weak var photoAlbum: PhotoAlbum?
     let imageData: Data?
     
@@ -31,6 +32,7 @@ class Photo {
     init(imageData: Data?) {
         self.imageData = imageData
     }
+    
     
     convenience required init?(record: CKRecord) {
         
@@ -48,7 +50,7 @@ class Photo {
     
     var cloudKitRecord: CKRecord {
         
-        // it is going to check if the cloudKitRecordID is already in the clud AND IF NOT if will create a new uuid.
+        // it is going to check if the cloudKitRecordID is already in the cloud AND IF NOT if will create a new uuid.
         let recordID = cloudKitRecordID ?? CKRecordID(recordName: UUID().uuidString)
         
         let record = CKRecord(recordType: recordType, recordID: recordID)
@@ -76,6 +78,8 @@ class Photo {
         return fileURL
     }
 }
+
+
 
 
 

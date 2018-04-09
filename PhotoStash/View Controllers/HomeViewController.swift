@@ -57,7 +57,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBAction func addNewStash(_ sender: Any) {
         addStashAlert()
-        self.tableView.reloadData()
+        //self.tableView.reloadData()
     }
     
     
@@ -76,15 +76,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             guard let stacheAsString = stashText?.text else {return}
             PhotoAlbumController.sharedController.createPhotoAlbumWith(title: stacheAsString, completion: { (_) in
                 DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                    
                 }
-                
             })
-            
-            
+            self.tableView.reloadData()
             print(PhotoAlbumController.sharedController.photoAlbums.count)
         })
+        
         
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alertController.addAction(addStash)

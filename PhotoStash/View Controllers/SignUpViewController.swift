@@ -31,11 +31,12 @@ class SignUpViewController: UIViewController {
     }
     
     
-    //    @objc func userCreated() {
-    //        DispatchQueue.main.async {
-    //            self.performSegue(withIdentifier: "SignInSegue", sender: nil)
-    //        }
-    //    }
+        @objc func userCreated() {
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "SignInSegue", sender: nil)
+            }
+        }
+    
     
     @IBAction func signInTapped(_ sender: Any) {
         guard let username = usernameTextField.text, !username.isEmpty,
@@ -43,9 +44,7 @@ class SignUpViewController: UIViewController {
         UserController.sharedController.createUserWith(username: username, email: email) { (_) in
             
         }
-        
     }
-    
 }
 
 

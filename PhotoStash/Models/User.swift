@@ -14,7 +14,7 @@ class User {
     
     var username: String
     var email: String
-    var photoAlbum: [PhotoAlbum] = []
+    var photoAlbums: [PhotoAlbum] = []
     let appleUserRef: CKReference?
     
     
@@ -30,29 +30,28 @@ class User {
     enum customNotifications {
         static let userSet = Notification.Name("UserWasSet")
     }
-    
     var cloudKitRecordID: CKRecordID?
     
     init(username: String, email: String, appleUserRef: CKReference) {
         self.email = email
         self.username = username
         self.appleUserRef = appleUserRef
-       
+        
     }
-
+    
     
     init?(cloudKitRecord: CKRecord) {
         guard let username = cloudKitRecord[User.CKKeys.usernameKey] as? String,
-        let email = cloudKitRecord[User.CKKeys.emailKey] as? String,
+            let email = cloudKitRecord[User.CKKeys.emailKey] as? String,
             let appleUserRef = cloudKitRecord[User.CKKeys.appleUserRefKey] as? CKReference else { return nil}
-    
+        
         self.username = username
         self.email = email
         self.appleUserRef = appleUserRef
         self.cloudKitRecordID = cloudKitRecord.recordID
-    
+        
     }
-
+    
     var recordType: String { return User.CKKeys.TypeKey }
     
     var cloudKitRecord: CKRecord? {
@@ -73,8 +72,8 @@ extension CKRecord {
         
         let recordID = user.cloudKitRecordID ?? CKRecordID(recordName: UUID().uuidString)
         
-            self.init(recordType: User.CKKeys.TypeKey, recordID: recordID)
-       
+        self.init(recordType: User.CKKeys.TypeKey, recordID: recordID)
+        
         
         self.setObject(user.username as CKRecordValue, forKey: User.CKKeys.usernameKey)
         self.setObject(user.email as CKRecordValue, forKey: User.CKKeys.emailKey)

@@ -11,6 +11,7 @@ import UIKit
 class StashImagesViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     var photoAlbum: PhotoAlbum?
+    var photos: [Photo] = []
     
     
     // MARK: - Outlets
@@ -50,7 +51,6 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
     @IBAction func addImageButtonTapped(_ sender: Any) {
         CameraPhotoHandler.shared.showActionSheet(vc: self)
         CameraPhotoHandler.shared.imagePickedBlock = { (image) in
-    
             
 //            var imageData: Data = UIImagePNGRepresentation(image)!
 //            var newPhoto: UIImage = UIImage(data: imageData)!

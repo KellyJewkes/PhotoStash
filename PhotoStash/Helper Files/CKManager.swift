@@ -11,7 +11,6 @@ import  CloudKit
 import  UIKit
 
 //class CKManger {
-
 //    func fetchUserRecordID(completion: @escaping((CKRecordID?, Error?) -> Void )) {
 //        CKContainer.default().fetchUserRecordID(completionHandler: completion)
 //    }
@@ -21,7 +20,6 @@ import  UIKit
 //        let record = CKRecord(user: user)
 //        CKContainer.default().publicCloudDatabase.save(record, completionHandler: completion)
 //    }
-
 private let CreatorUserRecordIDKey = "creatorUserRecordID"
 
 class CKManager {
@@ -34,8 +32,6 @@ class CKManager {
     init() {
         checkCloudKitAvailability()
     }
-    
-    
     
     func fetchLoggedInUserRecord(_ completion: ((_ record: CKRecord?, _ error: Error?) -> Void)?) {
         
@@ -63,9 +59,6 @@ class CKManager {
         }
     }
     
-    
-    
-    
     func deleteRecordWithID(_ recordID: CKRecordID, database: CKDatabase, completion: ((_ recordID: CKRecordID?, _ error: Error?) -> Void)?) {
         
         database.delete(withRecordID: recordID) { (recordID, error) in
@@ -84,77 +77,17 @@ class CKManager {
         
     }
     
-    func fetchRecordsOfType(_ type: String,
-                            predicate: NSPredicate = NSPredicate(value: true),
-                            database: CKDatabase,
-                            sortDescriptors: [NSSortDescriptor]? = nil,
-                            recordFetchedBlock: @escaping (_ record: CKRecord) -> Void = { _ in },
-                            completion: ((_ records: [CKRecord]?, _ error: Error?) -> Void)?) {
-        
-        var fetchedRecords: [CKRecord] = []
-        
-        let query = CKQuery(recordType: type, predicate: predicate)
-        query.sortDescriptors = sortDescriptors
-        let queryOperation = CKQueryOperation(query: query)
-        
-        let perRecordBlock = { (fetchedRecord: CKRecord) -> Void in
-            fetchedRecords.append(fetchedRecord)
-            recordFetchedBlock(fetchedRecord)
-        }
-        queryOperation.recordFetchedBlock = perRecordBlock
-        
-        var queryCompletionBlock: (CKQueryCursor?, Error?) -> Void = { (_, _) in }
-        
-        queryCompletionBlock = { (queryCursor: CKQueryCursor?, error: Error?) -> Void in
-            
-            if let queryCursor = queryCursor {
-                // there are more results, go fetch them
-                
-                let continuedQueryOperation = CKQueryOperation(cursor: queryCursor)
-                continuedQueryOperation.recordFetchedBlock = perRecordBlock
-                continuedQueryOperation.queryCompletionBlock = queryCompletionBlock
-                
-                database.add(continuedQueryOperation)
-                
-            } else {
-                completion?(fetchedRecords, error)
-            }
-        }
-        queryOperation.queryCompletionBlock = queryCompletionBlock
-        
-        database.add(queryOperation)
-    }
-    
-    
-    
-    func fetchCurrentUserRecords(_ type: String, database: CKDatabase, compeltion: ((_ records: [CKRecord]?, _ error: Error?) -> Void)?) {
-        
-        fetchLoggedInUserRecord { (record, error) in
-            if let record = record {
-                let predicate = NSPredicate(format: "%K == %@", argumentArray: [CreatorUserRecordIDKey, record.recordID])
-                
-                self.fetchRecordsOfType(type, predicate: predicate, database: database, completion: compeltion)
-            }
-        }
-    }
-    
-    
-    
     func saveRecords(_ records: [CKRecord], database: CKDatabase, perRecordCompletion: ((_ record: CKRecord?, _ error: Error?) -> Void)?, completion: ((_ records: [CKRecord]?, _ error: Error?) -> Void)?) {
         
         modifyRecords(records, database: database, perRecordCompletion: perRecordCompletion, completion: completion)
         
     }
     
-    
-    
     func saveRecord(_ record: CKRecord, database: CKDatabase, completion: ((_ record: CKRecord?, _ error: Error?) -> Void)?) {
         
         modifyRecords([record], database: database, perRecordCompletion: completion, completion: nil)
         
     }
-    
-    
     
     func modifyRecords(_ records: [CKRecord], database: CKDatabase, perRecordCompletion: ((_ record: CKRecord?, _ error: Error?) -> Void)?, completion: ((_ records: [CKRecord]?, _ error: Error?) -> Void)?) {
         
@@ -170,7 +103,6 @@ class CKManager {
         
         database.add(operation)
     }
-    
     
     
     func checkCloudKitAvailability() {
@@ -189,13 +121,13 @@ class CKManager {
     }
     
     
-    
     func handleCloudKitUnavailble(_ accountStatus: CKAccountStatus, error: Error?) {
         
         var errorText = "Sync is disabled"
         if let error = error {
             print("handleCloudKitUnavailablr ERROR: \(error), \(error.localizedDescription)")
             errorText += error.localizedDescription
+            
         }
         
         switch  accountStatus {
@@ -206,10 +138,10 @@ class CKManager {
         default:
             break
         }
+        
         displayCloudKitNotAvailableError(errorText)
+        
     }
-    
-    
     
     func displayCloudKitNotAvailableError(_ errorText: String) {
         
@@ -224,8 +156,12 @@ class CKManager {
                 let appWindow = appDelegate.window!,
                 let rootViewController = appWindow.rootViewController {
                 rootViewController.present(alertController, animated: true, completion: nil)
+                
             }
+            
         })
+        
+        
     }
     
     
@@ -248,8 +184,10 @@ class CKManager {
                 break
             }
             displayCloudKitPermissionNotGrantedError(errorText)
+            
         }
     }
+    
     
     
     
@@ -269,8 +207,6 @@ class CKManager {
         })
     }
     
-    
-    
     func requestDscoverabilityPermission() {
         CKContainer.default().status(forApplicationPermission: .userDiscoverability) { (permissionStatus, error) in
             if permissionStatus == .initialState {
@@ -283,6 +219,7 @@ class CKManager {
             }
         }
     }
+    
 }
 
 

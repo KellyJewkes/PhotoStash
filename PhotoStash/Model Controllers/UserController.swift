@@ -25,7 +25,7 @@ class UserController {
             DispatchQueue.main.async {
                 NotificationCenter.default.post(name: self.currentUserWasSetNotification, object: nil)
                 //let nC = NotificationCenter.default
-               // nC.post(name: UserController.userChangedNotification, object: self)
+                // nC.post(name: UserController.userChangedNotification, object: self)
             }
         }
     }
@@ -58,5 +58,6 @@ class UserController {
         }
     }
 }
+
 
 
