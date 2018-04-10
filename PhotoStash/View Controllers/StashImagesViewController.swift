@@ -13,16 +13,21 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
     var photoAlbum: PhotoAlbum?
     var photos: [Photo] = []
     
-    
-    // MARK: - Outlets
     @IBOutlet weak var stashNameLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var addImage: UIButton!
     @IBOutlet weak var homeButton: UIButton!
     @IBOutlet weak var holderView: UIView!
     
+    // -------------------------------------------------
+    // MARK: - Life-Cycle
+    // -------------------------------------------------
     
-    // MARK: - View Cycles
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.setHidesBackButton(true, animated: false)
+    }
+
     override func viewDidLoad() {
         navTitleImage()
         super.viewDidLoad()
@@ -31,46 +36,44 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
         stashNameLabel.text = photoAlbum?.title
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
+        checkAlbumAndUser()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationItem.setHidesBackButton(true, animated: false)
-    }
-    
-    
-    //MARK: - Invite & share button
+    // -------------------------------------------------
+    // MARK: - Invite & share button
+    // -------------------------------------------------
+
     @IBAction func inviteButtonTapped(_ sender: Any) {
         let shareVC = UIActivityViewController(activityItems: ["link to this album"], applicationActivities: nil)
         shareVC.popoverPresentationController?.sourceView = self.view
         self.present(shareVC, animated: true, completion: nil)
     }
     
-    
-    //MARK: - Add new image button (camera & photo library)
+    // -------------------------------------------------
+    // MARK: - Add new image button (camera & photo library)
+    // -------------------------------------------------
+
     @IBAction func addImageButtonTapped(_ sender: Any) {
         CameraPhotoHandler.shared.showActionSheet(vc: self)
         CameraPhotoHandler.shared.imagePickedBlock = { (image) in
-            
-//            var imageData: Data = UIImagePNGRepresentation(image)!
-//            var newPhoto: UIImage = UIImage(data: imageData)!
-//            let newPhoto2 = Photo(imageData: imageData)
-//            guard let photoAlbum = self.photoAlbum else {return}
-            
-            PhotoController.sharedController.createPhotoWith(image: image, completion: { (_) in
-                
-                self.collectionView.reloadData()
-                
+            DispatchQueue.main.async {
+                PhotoController.sharedController.createPhotoWith(image: image, completion: { (_) in
                 })
+                self.collectionView.reloadData()
+            }
         }
     }
+    
+    // -------------------------------------------------
+    // MARK: - Delete PhotoAlbum
+    // -------------------------------------------------
+
     func deleteAlert(){
         
         let alertController = UIAlertController(title: "Delete this album", message: "Warning! This can not be undone!", preferredStyle: .alert)
         
         let deleteAlbum = UIAlertAction(title: "DELETE", style: .destructive, handler:{(action: UIAlertAction)-> Void in
             guard let photoAlbum = self.photoAlbum else {return}
-          //CKManager.
+            //CKManager.
             self.navigationController?.popViewController(animated: true)
         })
         
@@ -86,7 +89,10 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
         deleteAlert()
     }
     
-    //MARK: - title image
+    // -------------------------------------------------
+    // MARK: - Mustache title image function
+    // -------------------------------------------------
+
     func navTitleImage() {
         let navController = navigationController!
         
@@ -107,8 +113,13 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
         navigationItem.titleView = imageView
     }
     
-    //MARK: - Collection view functions
+    
+    // -------------------------------------------------
+    // MARK: - Collection View Functions
+    // -------------------------------------------------
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print("This is how many photos are in the album \(photoAlbum?.photos?.count)")
         return photoAlbum?.photos?.count ?? 0
     }
     
@@ -124,7 +135,16 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
         
     }
     
+    func checkAlbumAndUser(){
+    guard let currentAlbum = PhotoAlbumController.sharedController.photoAlbum?.title else {return}
+    guard let currentUser = UserController.sharedController.user?.username else {return}
+        print("the current album is \(currentAlbum) & the current user is \(currentUser)")
+    }
     
+    // -------------------------------------------------
+    // MARK: - Segue
+    // -------------------------------------------------
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toDetailImageView",
             let indexPath = collectionView.indexPathsForSelectedItems?.first {

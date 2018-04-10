@@ -19,6 +19,7 @@ class UserController {
     let publicDatabase = CKContainer.default().publicCloudDatabase
     
     let currentUserWasSetNotification = Notification.Name("currentUserWasSet")
+    static let sharedController = UserController()
     
     var user: User? {
         didSet {
@@ -30,7 +31,6 @@ class UserController {
         }
     }
     
-    static let sharedController = UserController()
     
     func createUserWith(username: String, email: String, completion: @escaping (_ success: Bool) -> Void) {
         

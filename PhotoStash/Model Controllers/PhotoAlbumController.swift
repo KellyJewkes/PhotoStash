@@ -59,4 +59,33 @@ class PhotoAlbumController {
         }
     }
 }
+//    func loadAlbums() {
+//        let predicate = NSPredicate(value: true)
+//        let sort = NSSortDescriptor(key: "title", ascending: true)
+//        let query = CKQuery(recordType: "PhotoAlbum", predicate: predicate)
+//        query.sortDescriptors = [sort]
+//        let operation = CKQueryOperation(query: query)
+//        operation.desiredKeys = ["title"]
+//        operation.resultsLimit = 50
+//
+//        var newAlbums = [PhotoAlbum]()
+//
+//        operation.recordFetchedBlock = { record in
+//            let album = PhotoAlbumController.sharedController.photoAlbum
+//            album?.cloudKitRecordID = record.recordID
+//            album?.title = record["title"] as! String
+//            newAlbums.append(album!)
+//
+//            operation.queryCompletionBlock = { [unowned self] (cursor, error) in
+//                DispatchQueue.main.async {
+//                    if error == nil {
+//                        self.photoAlbums = newAlbums
+//                        self.tableView.reloadData()
+//                    } else {
+//                        print("Fetch Failed")
+//                    }
+//                }
+//            }
+//        }
+//    }
 

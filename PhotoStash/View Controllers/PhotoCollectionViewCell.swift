@@ -23,9 +23,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     }
     
     @IBAction func cellButtonTapped(_ sender: Any) {
-        
     }
-    
 }
 
 

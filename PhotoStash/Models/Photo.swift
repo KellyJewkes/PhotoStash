@@ -59,6 +59,7 @@ class Photo {
         
         if let photoAlbum = photoAlbum,
             let photoAlbumID = photoAlbum.cloudKitRecordID {
+            print("This is the AlbumID for the photo .....\(photoAlbumID)")
             let photoAlbumReference = CKReference(recordID: photoAlbumID, action: .deleteSelf)
             record.setObject(photoAlbumReference, forKey: photoAlbumReferenceKey)
         }

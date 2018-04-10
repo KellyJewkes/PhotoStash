@@ -12,6 +12,8 @@ import CloudKit
 
 class CameraPhotoHandler: NSObject {
     
+    
+    
     static let shared = CameraPhotoHandler()
     let myPickerController = UIImagePickerController()
     fileprivate var currentVC: UIViewController?
@@ -63,7 +65,6 @@ extension CameraPhotoHandler: UIImagePickerControllerDelegate, UINavigationContr
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             self.imagePickedBlock?(image)
-            
         }else{
             print("Error in getting image")
         }

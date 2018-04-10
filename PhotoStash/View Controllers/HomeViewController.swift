@@ -11,33 +11,71 @@ import CloudKit
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    // MARK: - Outlets
+    var photoAlbums = [PhotoAlbum]()
+    
     @IBOutlet weak var tableView: UITableView!
     
-    // MARK: - View Cycles
+    // -------------------------------------------------
+    // MARK: - View-Cycles
+    // -------------------------------------------------
+
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+        super.viewWillAppear(animated)
+        navTitleImage()
+        self.navigationItem.setHidesBackButton(true, animated: false)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let currentUser = UserController.sharedController.user else {return}
         CKContainer.default()
+       // loadAlbums()
        // tableView.clipsToBounds = true
        // tableView.layer.cornerRadius = 20
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         navTitleImage()
+        print("this is the current user- \(currentUser.username)")
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        tableView.reloadData()
-        super.viewWillAppear(animated)
-        self.navigationItem.setHidesBackButton(true, animated: false)
-        
-    }
     
-    // MARK: - App Title Image
+//    func loadAlbums() {
+//        let predicate = NSPredicate(value: true)
+//        let sort = NSSortDescriptor(key: "title", ascending: true)
+//        let query = CKQuery(recordType: "PhotoAlbum", predicate: predicate)
+//        query.sortDescriptors = [sort]
+//        let operation = CKQueryOperation(query: query)
+//        operation.desiredKeys = ["title"]
+//        operation.resultsLimit = 50
+//
+//        var newAlbums = [PhotoAlbum]()
+//
+//        operation.recordFetchedBlock = { record in
+//            let album = PhotoAlbumController.sharedController.photoAlbum
+//            album?.cloudKitRecordID = record.recordID
+//            album?.title = record["title"] as! String
+//            newAlbums.append(album!)
+//
+//            operation.queryCompletionBlock = { [unowned self] (cursor, error) in
+//                DispatchQueue.main.async {
+//                    if error == nil {
+//                        self.photoAlbums = newAlbums
+//                        self.tableView.reloadData()
+//                    } else {
+//                        print("Fetch Failed")
+//                    }
+//                }
+//            }
+//        }
+//    }
+    
+    // -------------------------------------------------
+    // MARK: - Mustache title image function
+    // -------------------------------------------------
+
     func navTitleImage() {
         let navController = navigationController!
-        
-        //        let backButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: navigationController, action: nil)
-        //        navigationItem.leftBarButtonItem = backButton
         
         let image = #imageLiteral(resourceName: "finalStache")
         let imageView = UIImageView(image: image)
@@ -54,14 +92,15 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         navigationItem.titleView = imageView
     }
     
-    
+    // -------------------------------------------------
+    // MARK: - Add Photo Album Alert Function
+    // -------------------------------------------------
+
     @IBAction func addNewStash(_ sender: Any) {
         addStashAlert()
         //self.tableView.reloadData()
     }
     
-    
-    // MARK: - Alert function
     func addStashAlert(){
         
         let alertController = UIAlertController(title: "Add a new Stache", message: "", preferredStyle: .alert)
@@ -76,12 +115,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             guard let stacheAsString = stashText?.text else {return}
             PhotoAlbumController.sharedController.createPhotoAlbumWith(title: stacheAsString, completion: { (_) in
                 DispatchQueue.main.async {
+                    self.tableView.reloadData()
                 }
             })
-            self.tableView.reloadData()
             print(PhotoAlbumController.sharedController.photoAlbums.count)
+            //print(UserController.sharedController.user)
         })
-        
         
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alertController.addAction(addStash)
@@ -90,24 +129,27 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         present(alertController, animated: true, completion: nil)
     }
     
-    
-    // MARK: - Table view functions
+    // -------------------------------------------------
+    // MARK: - Table View Functions
+    // -------------------------------------------------
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return PhotoAlbumController.sharedController.photoAlbums.count
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "StashNameCell", for: indexPath)
         let photoAlbum = PhotoAlbumController.sharedController.photoAlbums[indexPath.row]
         cell.textLabel?.text = photoAlbum.title
-        //cell.detailTextLabel?.text = "\(PhotoAlbumController.sharedController.photoAlbums.count)"
-            
-            //sharedController.photoAlbums.index(of: photoAlbum)! + 1)
+        
         return cell
     }
     
-    
-    // MARK: - Navigation
+    // -------------------------------------------------
+    // MARK: - Segue
+    // -------------------------------------------------
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toCurrentPhotoAlbum",
             let indexPath = tableView.indexPathForSelectedRow {

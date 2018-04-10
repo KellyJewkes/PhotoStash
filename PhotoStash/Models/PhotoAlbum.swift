@@ -15,7 +15,7 @@ class PhotoAlbum: Equatable {
     
     var photos: [Photo]?
     
-    let title: String
+    var title: String
     let userReference: CKReference?
     weak var user: User?
     var users: [User] = []

@@ -12,12 +12,10 @@ class SignUpViewController: UIViewController {
     
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
-    
     @IBOutlet weak var signInButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // NotificationCenter.default.addObserver(self, selector: #selector(userCreated), name: User.customNotifications.userSet, object: nil)
         signInButton.clipsToBounds = true
         signInButton.layer.cornerRadius = 20

@@ -10,6 +10,13 @@ import UIKit
 
 class DetailImageViewController: UIViewController {
     
+    
+    @IBOutlet weak var detailImageView: UIImageView!
+    @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var downloadButton: UIButton!
+    
     var detailPhoto: Photo? {
         didSet {
             updateViews()
@@ -20,19 +27,15 @@ class DetailImageViewController: UIViewController {
         detailImageView.image = detailPhoto?.image
     }
     
-    @IBOutlet weak var detailImageView: UIImageView!
-    @IBOutlet weak var deleteButton: UIButton!
-    @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var shareButton: UIButton!
-    @IBOutlet weak var downloadButton: UIButton!
-    
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         detailImageView.image = detailPhoto?.image
     }
     
-    
+    // -------------------------------------------------
+    // MARK: - Buttons
+    // -------------------------------------------------
+
     @IBAction func deleteButtonTapped(_ sender: Any) {
         guard let currentPhoto = detailPhoto else {return}
     }
@@ -46,15 +49,12 @@ class DetailImageViewController: UIViewController {
         let photoToShare = [image]
         let activityViewController = UIActivityViewController(activityItems: photoToShare, applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view
-        
         self.present(activityViewController, animated: true, completion: nil)
-        
     }
     
     @IBAction func downloadButtonTapped(_ sender: Any) {
         guard let currentPhoto = detailImageView.image else {return}
         UIImageWriteToSavedPhotosAlbum(currentPhoto, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
-        
     }
     
     @objc func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer) {
@@ -69,6 +69,4 @@ class DetailImageViewController: UIViewController {
             present(ac, animated: true)
         }
     }
-    
-    
 }
