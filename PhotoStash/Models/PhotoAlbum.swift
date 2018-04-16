@@ -12,14 +12,14 @@ import CloudKit
 
 class PhotoAlbum: Equatable {
     
-    
     var photos: [Photo]?
     
     var title: String
     let userReference: CKReference?
-    weak var user: User?
     var users: [User] = []
-    
+    var recordType: String { return PhotoAlbum.CKKeys.typeKey }
+    var cloudKitRecordID: CKRecordID?
+    weak var user: User?
     
     enum CKKeys {
         
@@ -28,17 +28,17 @@ class PhotoAlbum: Equatable {
         static let userReferenceKey = "userReference"
     }
     
+    
     enum customNotifications {
         static let photoAlbumSet = Notification.Name("PhotoAlbumWasSet")
     }
     
     
-    var cloudKitRecordID: CKRecordID?
-    
     init(title: String, userReference: CKReference) {
         self.title = title
         self.userReference = userReference
     }
+    
     
     init?(cloudKitRecord: CKRecord) {
         guard let title = cloudKitRecord[PhotoAlbum.CKKeys.titleKey] as? String,
@@ -47,10 +47,8 @@ class PhotoAlbum: Equatable {
         self.title = title
         self.userReference = userReference
         self.cloudKitRecordID = cloudKitRecord.recordID
-        
     }
     
-    var recordType: String { return PhotoAlbum.CKKeys.typeKey }
     
     var cloudKitRecord: CKRecord {
         let recordID = cloudKitRecordID ?? CKRecordID(recordName: UUID().uuidString)
@@ -58,17 +56,15 @@ class PhotoAlbum: Equatable {
         let record = CKRecord(recordType: recordType, recordID: recordID)
         record.setValue(title, forKey: CKKeys.titleKey)
         
-        
         return record
-        
     }
-    
-    
 }
+
 
 func ==(lhs: PhotoAlbum, rhs: PhotoAlbum) -> Bool {
     return lhs.title == rhs.title
 }
+
 
 extension CKRecord {
     convenience init(photoAlbum: PhotoAlbum) {
@@ -81,8 +77,5 @@ extension CKRecord {
         }
         self.setObject(photoAlbum.title as CKRecordValue, forKey: PhotoAlbum.CKKeys.titleKey)
         self.setValue(photoAlbum.userReference, forKey: PhotoAlbum.CKKeys.userReferenceKey)
-        
-        
-        
     }
 }

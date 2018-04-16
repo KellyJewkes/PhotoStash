@@ -44,6 +44,8 @@ extension PhotoController {
 
 class PhotoController {
     
+    static let sharedController = PhotoController()
+    
     let publicDatabase = CKContainer.default().publicCloudDatabase
     
     var photos = [Photo]() {
@@ -56,14 +58,13 @@ class PhotoController {
     }
     
     
-    static let sharedController = PhotoController()
-    
     func createPhotoWith(image: UIImage, completion: ((Photo) -> Void)?) {
         guard let data = UIImageJPEGRepresentation(image, 1.0) else {return}
         
         let photo = Photo(imageData: data)
         
         photos.append(photo)
+        print("this is the photo in PhotoController \(photo)" )
         
         CKManager.shared.saveRecord(photo.cloudKitRecord, database: publicDatabase) { (record, error) in
             guard let record = record else {

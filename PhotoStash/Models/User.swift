@@ -16,6 +16,7 @@ class User {
     var email: String
     var photoAlbums: [PhotoAlbum] = []
     let appleUserRef: CKReference?
+    var cloudKitRecordID: CKRecordID?
     
     
     enum CKKeys {
@@ -30,7 +31,6 @@ class User {
     enum customNotifications {
         static let userSet = Notification.Name("UserWasSet")
     }
-    var cloudKitRecordID: CKRecordID?
     
     init(username: String, email: String, appleUserRef: CKReference) {
         self.email = email

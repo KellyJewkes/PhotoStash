@@ -12,15 +12,18 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var cellImage: UIImageView!
     
+    
     var photo: Photo? {
         didSet {
             updateViews()
         }
     }
     
+    
     func updateViews(){
         cellImage.image = photo?.image
     }
+    
     
     @IBAction func cellButtonTapped(_ sender: Any) {
     }

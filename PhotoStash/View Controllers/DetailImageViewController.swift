@@ -17,32 +17,39 @@ class DetailImageViewController: UIViewController {
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var downloadButton: UIButton!
     
+    
     var detailPhoto: Photo? {
         didSet {
             updateViews()
         }
     }
     
+    
     func updateViews() {
         detailImageView.image = detailPhoto?.image
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         detailImageView.image = detailPhoto?.image
     }
     
+    
     // -------------------------------------------------
     // MARK: - Buttons
     // -------------------------------------------------
 
+    
     @IBAction func deleteButtonTapped(_ sender: Any) {
         guard let currentPhoto = detailPhoto else {return}
     }
     
+    
     @IBAction func cancelButtonTapped(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
+    
     
     @IBAction func shareButtonTapped(_ sender: Any) {
         guard let image = detailImageView.image else {return}
@@ -52,10 +59,12 @@ class DetailImageViewController: UIViewController {
         self.present(activityViewController, animated: true, completion: nil)
     }
     
+    
     @IBAction func downloadButtonTapped(_ sender: Any) {
         guard let currentPhoto = detailImageView.image else {return}
         UIImageWriteToSavedPhotosAlbum(currentPhoto, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
     }
+    
     
     @objc func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer) {
         if let error = error {

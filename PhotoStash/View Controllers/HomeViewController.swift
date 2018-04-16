@@ -22,75 +22,80 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
         super.viewWillAppear(animated)
-        navTitleImage()
+        //navTitleImage()
         self.navigationItem.setHidesBackButton(true, animated: false)
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let currentUser = UserController.sharedController.user else {return}
         CKContainer.default()
-       // loadAlbums()
+        loadAlbums()
        // tableView.clipsToBounds = true
        // tableView.layer.cornerRadius = 20
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
-        navTitleImage()
+        //navTitleImage()
         print("this is the current user- \(currentUser.username)")
     }
     
     
-//    func loadAlbums() {
-//        let predicate = NSPredicate(value: true)
-//        let sort = NSSortDescriptor(key: "title", ascending: true)
-//        let query = CKQuery(recordType: "PhotoAlbum", predicate: predicate)
-//        query.sortDescriptors = [sort]
-//        let operation = CKQueryOperation(query: query)
-//        operation.desiredKeys = ["title"]
-//        operation.resultsLimit = 50
-//
-//        var newAlbums = [PhotoAlbum]()
-//
-//        operation.recordFetchedBlock = { record in
-//            let album = PhotoAlbumController.sharedController.photoAlbum
-//            album?.cloudKitRecordID = record.recordID
-//            album?.title = record["title"] as! String
-//            newAlbums.append(album!)
-//
-//            operation.queryCompletionBlock = { [unowned self] (cursor, error) in
-//                DispatchQueue.main.async {
-//                    if error == nil {
-//                        self.photoAlbums = newAlbums
-//                        self.tableView.reloadData()
-//                    } else {
-//                        print("Fetch Failed")
-//                    }
-//                }
-//            }
-//        }
-//    }
+    func loadAlbums() {
+        let predicate = NSPredicate(value: true)
+        let sort = NSSortDescriptor(key: "title", ascending: true)
+        let query = CKQuery(recordType: "PhotoAlbum", predicate: predicate)
+        query.sortDescriptors = [sort]
+        let operation = CKQueryOperation(query: query)
+        operation.desiredKeys = ["title"]
+        operation.resultsLimit = 50
+
+        var newAlbums = [PhotoAlbum]()
+        
+        tableView.reloadData()
+
+        operation.recordFetchedBlock = { record in
+            let album = PhotoAlbumController.sharedController.photoAlbum
+            album?.cloudKitRecordID = record.recordID
+            album?.title = record["title"] as! String
+            newAlbums.append(album!)
+
+            operation.queryCompletionBlock = { [unowned self] (cursor, error) in
+                DispatchQueue.main.async {
+                    if error == nil {
+                        self.photoAlbums = newAlbums
+                        print("these are the new albums\(newAlbums)")
+                        self.tableView.reloadData()
+                    } else {
+                        print("Fetch Failed")
+                    }
+                }
+            }
+        }
+    }
     
     // -------------------------------------------------
     // MARK: - Mustache title image function
     // -------------------------------------------------
 
-    func navTitleImage() {
-        let navController = navigationController!
-        
-        let image = #imageLiteral(resourceName: "finalStache")
-        let imageView = UIImageView(image: image)
-        
-        let bannerWidth = navController.navigationBar.frame.size.width
-        let bannerHeight = navController.navigationBar.frame.size.height
-        
-        let bannerX = bannerWidth / 2 - image.size.width / 2
-        let bannerY = bannerHeight / 2 - image.size.height / 2
-        
-        imageView.frame = CGRect(x: bannerX, y: bannerY, width: bannerWidth * 2, height: bannerHeight * 2)
-        imageView.contentMode = .scaleAspectFit
-        
-        navigationItem.titleView = imageView
-    }
+//    func navTitleImage() {
+//        let navController = navigationController!
+//
+//        let image = #imageLiteral(resourceName: "finalStache")
+//        let imageView = UIImageView(image: image)
+//
+//        let bannerWidth = navController.navigationBar.frame.size.width
+//        let bannerHeight = navController.navigationBar.frame.size.height
+//
+//        let bannerX = bannerWidth / 2 - image.size.width / 2
+//        let bannerY = bannerHeight / 2 - image.size.height / 2
+//
+//        imageView.frame = CGRect(x: bannerX, y: bannerY, width: bannerWidth * 2, height: bannerHeight * 2)
+//        imageView.contentMode = .scaleAspectFit
+//
+//        navigationItem.titleView = imageView
+//    }
+    
     
     // -------------------------------------------------
     // MARK: - Add Photo Album Alert Function
@@ -100,6 +105,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         addStashAlert()
         //self.tableView.reloadData()
     }
+    
     
     func addStashAlert(){
         
@@ -142,7 +148,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "StashNameCell", for: indexPath)
         let photoAlbum = PhotoAlbumController.sharedController.photoAlbums[indexPath.row]
         cell.textLabel?.text = photoAlbum.title
-        
         return cell
     }
     

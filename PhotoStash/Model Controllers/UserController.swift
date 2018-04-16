@@ -19,6 +19,7 @@ class UserController {
     let publicDatabase = CKContainer.default().publicCloudDatabase
     
     let currentUserWasSetNotification = Notification.Name("currentUserWasSet")
+    
     static let sharedController = UserController()
     
     var user: User? {
@@ -57,6 +58,30 @@ class UserController {
             
         }
     }
+
+    func fetchCurrentUser(completion: @escaping (_ success: Bool) -> Void = { _ in}) {
+        CKContainer.default().fetchUserRecordID { (appleUserRecordID, error) in
+            if let error = error { print(error.localizedDescription)}
+            guard let appleUserRecordID = appleUserRecordID else { completion(false); return }
+            
+            let appleUserReference = CKReference(recordID: appleUserRecordID, action: .deleteSelf)
+            
+            let predicate = NSPredicate(format: "appleUserRef == %@", appleUserReference)
+            
+            CKManager.shared.fetchRecordsWithType(User.CKKeys.TypeKey, predicate: predicate, recordFetchedBlock: nil, completion: { (records, error) in
+                guard let currentUserRecord = records?.first else { completion(false); return }
+                
+                let currentUser = User(cloudKitRecord: currentUserRecord)
+                
+                self.user = currentUser
+                
+                completion(true)
+            })
+        }
+    }
+    
+    
+
 }
 
 

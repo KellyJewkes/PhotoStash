@@ -33,6 +33,7 @@ class CKManager {
         checkCloudKitAvailability()
     }
     
+    
     func fetchLoggedInUserRecord(_ completion: ((_ record: CKRecord?, _ error: Error?) -> Void)?) {
         
         CKContainer.default().fetchUserRecordID { (recordID, error) in
@@ -45,11 +46,47 @@ class CKManager {
                 let completion = completion {
                 
                 self.fetchRecord(withID: recordID, database: self.publicDatabase, completion: completion)
-                
             }
         }
     }
     
+    func fetchRecordsWithType(_ type: String,
+                              predicate: NSPredicate = NSPredicate(value: true),
+                              recordFetchedBlock: ((_ record: CKRecord) -> Void)?,
+                              completion: ((_ records: [CKRecord]?, _ error: Error?) -> Void)?) {
+        
+        var fetchedRecords: [CKRecord] = []
+        
+        let query = CKQuery(recordType: type, predicate: predicate)
+        let queryOperation = CKQueryOperation(query: query)
+        
+        let perRecordBlock = { (fetchedRecord: CKRecord) -> Void in
+            fetchedRecords.append(fetchedRecord)
+            recordFetchedBlock?(fetchedRecord)
+        }
+        queryOperation.recordFetchedBlock = perRecordBlock
+        
+        var queryCompletionBlock: (CKQueryCursor?, Error?) -> Void = { (_, _) in }
+        
+        queryCompletionBlock = { (queryCursor: CKQueryCursor?, error: Error?) -> Void in
+            
+            if let queryCursor = queryCursor {
+                // there are more results, go fetch them
+                
+                let continuedQueryOperation = CKQueryOperation(cursor: queryCursor)
+                continuedQueryOperation.recordFetchedBlock = perRecordBlock
+                continuedQueryOperation.queryCompletionBlock = queryCompletionBlock
+                
+                self.publicDatabase.add(continuedQueryOperation)
+                
+            } else {
+                completion?(fetchedRecords, error)
+            }
+        }
+        queryOperation.queryCompletionBlock = queryCompletionBlock
+        
+        self.publicDatabase.add(queryOperation)
+    }
     
     
     func fetchRecord(withID recordID: CKRecordID, database: CKDatabase, completion:((_ record: CKRecord?, _ error: Error?) -> Void)?) {
@@ -59,12 +96,14 @@ class CKManager {
         }
     }
     
+    
     func deleteRecordWithID(_ recordID: CKRecordID, database: CKDatabase, completion: ((_ recordID: CKRecordID?, _ error: Error?) -> Void)?) {
         
         database.delete(withRecordID: recordID) { (recordID, error) in
             completion?(recordID, error)
         }
     }
+    
     
     func deleteRecordsWithID(_ recordIDs: [CKRecordID], database: CKDatabase, completion: ((_ records: [CKRecord]?, _ recordIDs: [CKRecordID]?, _ error: Error?) -> Void)?) {
         
@@ -74,20 +113,20 @@ class CKManager {
         operation.modifyRecordsCompletionBlock = completion
         
         database.add(operation)
-        
     }
+    
     
     func saveRecords(_ records: [CKRecord], database: CKDatabase, perRecordCompletion: ((_ record: CKRecord?, _ error: Error?) -> Void)?, completion: ((_ records: [CKRecord]?, _ error: Error?) -> Void)?) {
         
         modifyRecords(records, database: database, perRecordCompletion: perRecordCompletion, completion: completion)
-        
     }
+    
     
     func saveRecord(_ record: CKRecord, database: CKDatabase, completion: ((_ record: CKRecord?, _ error: Error?) -> Void)?) {
         
         modifyRecords([record], database: database, perRecordCompletion: completion, completion: nil)
-        
     }
+    
     
     func modifyRecords(_ records: [CKRecord], database: CKDatabase, perRecordCompletion: ((_ record: CKRecord?, _ error: Error?) -> Void)?, completion: ((_ records: [CKRecord]?, _ error: Error?) -> Void)?) {
         
@@ -98,9 +137,7 @@ class CKManager {
         operation.perRecordCompletionBlock = perRecordCompletion
         operation.modifyRecordsCompletionBlock = { (records, recordIDs, error) -> Void in
             completion?(records, error)
-            
         }
-        
         database.add(operation)
     }
     
@@ -127,7 +164,6 @@ class CKManager {
         if let error = error {
             print("handleCloudKitUnavailablr ERROR: \(error), \(error.localizedDescription)")
             errorText += error.localizedDescription
-            
         }
         
         switch  accountStatus {
@@ -138,10 +174,9 @@ class CKManager {
         default:
             break
         }
-        
         displayCloudKitNotAvailableError(errorText)
-        
     }
+    
     
     func displayCloudKitNotAvailableError(_ errorText: String) {
         
@@ -156,14 +191,9 @@ class CKManager {
                 let appWindow = appDelegate.window!,
                 let rootViewController = appWindow.rootViewController {
                 rootViewController.present(alertController, animated: true, completion: nil)
-                
             }
-            
         })
-        
-        
     }
-    
     
     
     func handleCloudKitPermissionStatus(_ permissionStatus: CKApplicationPermissionStatus, error: Error?) {
@@ -184,11 +214,8 @@ class CKManager {
                 break
             }
             displayCloudKitPermissionNotGrantedError(errorText)
-            
         }
     }
-    
-    
     
     
     func displayCloudKitPermissionNotGrantedError(_ errorText: String) {
@@ -207,6 +234,7 @@ class CKManager {
         })
     }
     
+    
     func requestDscoverabilityPermission() {
         CKContainer.default().status(forApplicationPermission: .userDiscoverability) { (permissionStatus, error) in
             if permissionStatus == .initialState {
@@ -219,11 +247,5 @@ class CKManager {
             }
         }
     }
-    
 }
-
-
-
-
-
 

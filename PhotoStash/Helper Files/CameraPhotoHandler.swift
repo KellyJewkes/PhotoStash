@@ -12,13 +12,13 @@ import CloudKit
 
 class CameraPhotoHandler: NSObject {
     
-    
-    
     static let shared = CameraPhotoHandler()
     let myPickerController = UIImagePickerController()
     fileprivate var currentVC: UIViewController?
     
+    
     var imagePickedBlock: ((UIImage) -> Void)?
+    
     
     // MARK: - to access camera
     func useCamera() {
@@ -30,6 +30,7 @@ class CameraPhotoHandler: NSObject {
         }
     }
     
+    
     // MARK: - to access photo library
     func usePhotoLibrary() {
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
@@ -38,6 +39,7 @@ class CameraPhotoHandler: NSObject {
             currentVC?.present(myPickerController, animated: true, completion: nil)
         }
     }
+    
     
     func showActionSheet(vc: UIViewController) {
         currentVC = vc
@@ -57,10 +59,12 @@ class CameraPhotoHandler: NSObject {
     }
 }
 
+
 extension CameraPhotoHandler: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         currentVC?.dismiss(animated: true, completion: nil)
     }
+    
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
@@ -70,7 +74,6 @@ extension CameraPhotoHandler: UIImagePickerControllerDelegate, UINavigationContr
         }
         myPickerController.dismiss(animated: true, completion: nil)
     }
-    
 }
 
 

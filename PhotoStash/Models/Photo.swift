@@ -18,7 +18,7 @@ class Photo {
     private let photoAlbumReferenceKey = "photoAlbumReference"
     
     
-    weak var photoAlbum: PhotoAlbum?
+    var photoAlbum: PhotoAlbum?
     let imageData: Data?
     
     // computed property for image from data
@@ -26,6 +26,7 @@ class Photo {
         guard let imageData = self.imageData else {return nil}
         return UIImage(data: imageData)
     }
+    
     
     var cloudKitRecordID: CKRecordID?
     
@@ -66,6 +67,7 @@ class Photo {
         // this record uses the temp URLfilepath of the image
         return record
     }
+   
     
     fileprivate var temporaryImageURL: URL {
         

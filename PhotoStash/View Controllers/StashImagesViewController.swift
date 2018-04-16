@@ -23,13 +23,15 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
     // MARK: - Life-Cycle
     // -------------------------------------------------
     
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationItem.setHidesBackButton(true, animated: false)
     }
-
+    
+    
     override func viewDidLoad() {
-        navTitleImage()
+        //navTitleImage()
         super.viewDidLoad()
         holderView.clipsToBounds = true
         holderView.layer.cornerRadius = 20
@@ -38,20 +40,24 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
         self.navigationController?.navigationBar.shadowImage = UIImage()
         checkAlbumAndUser()
     }
+    
+    
     // -------------------------------------------------
     // MARK: - Invite & share button
     // -------------------------------------------------
-
+    
     @IBAction func inviteButtonTapped(_ sender: Any) {
         let shareVC = UIActivityViewController(activityItems: ["link to this album"], applicationActivities: nil)
         shareVC.popoverPresentationController?.sourceView = self.view
         self.present(shareVC, animated: true, completion: nil)
     }
     
+    
     // -------------------------------------------------
     // MARK: - Add new image button (camera & photo library)
     // -------------------------------------------------
-
+    
+    
     @IBAction func addImageButtonTapped(_ sender: Any) {
         CameraPhotoHandler.shared.showActionSheet(vc: self)
         CameraPhotoHandler.shared.imagePickedBlock = { (image) in
@@ -63,10 +69,12 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
         }
     }
     
+    
     // -------------------------------------------------
     // MARK: - Delete PhotoAlbum
     // -------------------------------------------------
-
+    
+    
     func deleteAlert(){
         
         let alertController = UIAlertController(title: "Delete this album", message: "Warning! This can not be undone!", preferredStyle: .alert)
@@ -89,39 +97,43 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
         deleteAlert()
     }
     
+    
     // -------------------------------------------------
     // MARK: - Mustache title image function
     // -------------------------------------------------
-
-    func navTitleImage() {
-        let navController = navigationController!
-        
-        self.navigationItem.setHidesBackButton(true, animated: false)
-        
-        let image = #imageLiteral(resourceName: "finalStache")
-        let imageView = UIImageView(image: image)
-        
-        let bannerWidth = navController.navigationBar.frame.size.width
-        let bannerHeight = navController.navigationBar.frame.size.height
-        
-        let bannerX = bannerWidth / 2 - image.size.width / 2
-        let bannerY = bannerHeight / 2 - image.size.height / 2
-        
-        imageView.frame = CGRect(x: bannerX, y: bannerY, width: bannerWidth * 2, height: bannerHeight * 2)
-        imageView.contentMode = .scaleAspectFit
-        
-        navigationItem.titleView = imageView
-    }
+    
+    
+//    func navTitleImage() {
+//        let navController = navigationController!
+//        
+//        self.navigationItem.setHidesBackButton(true, animated: false)
+//        
+//        let image = #imageLiteral(resourceName: "finalStache")
+//        let imageView = UIImageView(image: image)
+//        
+//        let bannerWidth = navController.navigationBar.frame.size.width
+//        let bannerHeight = navController.navigationBar.frame.size.height
+//        
+//        let bannerX = bannerWidth / 2 - image.size.width / 2
+//        let bannerY = bannerHeight / 2 - image.size.height / 2
+//        
+//        imageView.frame = CGRect(x: bannerX, y: bannerY, width: bannerWidth * 2, height: bannerHeight * 2)
+//        imageView.contentMode = .scaleAspectFit
+//        
+//        navigationItem.titleView = imageView
+//    }
     
     
     // -------------------------------------------------
     // MARK: - Collection View Functions
     // -------------------------------------------------
-
+    
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("This is how many photos are in the album \(photoAlbum?.photos?.count)")
+        print("This is how many photos are in the album \(String(describing: photoAlbum?.photos?.count))")
         return photoAlbum?.photos?.count ?? 0
     }
+    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "newImageCell", for: indexPath) as? PhotoCollectionViewCell else { return UICollectionViewCell()}
@@ -130,21 +142,23 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
         return cell
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "toDetailImageView", sender: self)
-        
     }
     
+    
     func checkAlbumAndUser(){
-    guard let currentAlbum = PhotoAlbumController.sharedController.photoAlbum?.title else {return}
-    guard let currentUser = UserController.sharedController.user?.username else {return}
+        guard let currentAlbum = PhotoAlbumController.sharedController.photoAlbum?.title else {return}
+        guard let currentUser = UserController.sharedController.user?.username else {return}
         print("the current album is \(currentAlbum) & the current user is \(currentUser)")
     }
+    
     
     // -------------------------------------------------
     // MARK: - Segue
     // -------------------------------------------------
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toDetailImageView",
             let indexPath = collectionView.indexPathsForSelectedItems?.first {
