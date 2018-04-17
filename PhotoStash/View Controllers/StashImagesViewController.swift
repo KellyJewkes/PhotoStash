@@ -12,6 +12,7 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
     
     var photoAlbum: PhotoAlbum?
     var photos: [Photo] = []
+    var photoAlbums: [PhotoAlbum] = []
     
     @IBOutlet weak var stashNameLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -61,13 +62,16 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
     @IBAction func addImageButtonTapped(_ sender: Any) {
         CameraPhotoHandler.shared.showActionSheet(vc: self)
         CameraPhotoHandler.shared.imagePickedBlock = { (image) in
-            DispatchQueue.main.async {
-                PhotoController.sharedController.createPhotoWith(image: image, completion: { (_) in
-                })
+            //DispatchQueue.main.async {
+            PhotoController.sharedController.createPhotoWith(image: image, completion: { (photo) in
+            
+            })
+            
                 self.collectionView.reloadData()
             }
-        }
+       
     }
+    
     
     
     // -------------------------------------------------
@@ -80,8 +84,7 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
         let alertController = UIAlertController(title: "Delete this album", message: "Warning! This can not be undone!", preferredStyle: .alert)
         
         let deleteAlbum = UIAlertAction(title: "DELETE", style: .destructive, handler:{(action: UIAlertAction)-> Void in
-            guard let photoAlbum = self.photoAlbum else {return}
-            //CKManager.
+            //guard let photoAlbum = self.photoAlbum else {return}
             self.navigationController?.popViewController(animated: true)
         })
         

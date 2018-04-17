@@ -15,7 +15,7 @@ class User {
     var username: String
     var email: String
     var photoAlbums: [PhotoAlbum] = []
-    let appleUserRef: CKReference?
+    let appleUserRef: CKReference
     var cloudKitRecordID: CKRecordID?
     
     

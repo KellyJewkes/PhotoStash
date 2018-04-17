@@ -42,7 +42,7 @@ class DetailImageViewController: UIViewController {
 
     
     @IBAction func deleteButtonTapped(_ sender: Any) {
-        guard let currentPhoto = detailPhoto else {return}
+    //    guard let currentPhoto = detailPhoto else {return}
     }
     
     

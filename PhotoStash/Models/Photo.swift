@@ -20,6 +20,7 @@ class Photo {
     
     var photoAlbum: PhotoAlbum?
     let imageData: Data?
+    //let photoAlbumRef: CKReference?
     
     // computed property for image from data
     var image: UIImage? {
@@ -34,6 +35,10 @@ class Photo {
         self.imageData = imageData
     }
     
+//    init(imageData: Data?, photoAlbumRef: CKReference) {
+//        self.imageData = imageData
+//        self.photoAlbumRef = photoAlbumRef
+//    }
     
     convenience required init?(record: CKRecord) {
         

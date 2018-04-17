@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import CloudKit
 
-class PhotoAlbum: Equatable {
+class PhotoAlbum {
     
     var photos: [Photo]?
     
@@ -58,11 +58,6 @@ class PhotoAlbum: Equatable {
         
         return record
     }
-}
-
-
-func ==(lhs: PhotoAlbum, rhs: PhotoAlbum) -> Bool {
-    return lhs.title == rhs.title
 }
 
 

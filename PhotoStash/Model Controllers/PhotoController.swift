@@ -24,19 +24,6 @@ import CloudKit
 //
 //}
 
-//class PhotoController {
-//
-//    static let shared = PhotoController()
-//
-//    var photos = [Photo]()
-//
-//    static func create(photoWithImage image: UIImage, photoAlbum: PhotoAlbum) {
-//        let photo = Photo(image: image)
-//        PhotoAlbumController.shared.add(photo: photo, toPhotoAlbum: photoAlbum)
-//
-//    }
-//
-//}
 extension PhotoController {
     static let PhotoChangedNotification = Notification.Name("PhotosChangedNotification")
 }
@@ -79,11 +66,4 @@ class PhotoController {
         }
     }
 }
-
-
-
-
-
-
-
 

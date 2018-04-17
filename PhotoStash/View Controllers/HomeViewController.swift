@@ -1,3 +1,4 @@
+
 //
 //  HomeViewController.swift
 //  PhotoHub
@@ -40,7 +41,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         print("this is the current user- \(currentUser.username)")
     }
     
-    
+    // -------------------------------------------------
+    // MARK: - Fetch User's Albums
+    // -------------------------------------------------
+
     func loadAlbums() {
         let predicate = NSPredicate(value: true)
         let sort = NSSortDescriptor(key: "title", ascending: true)
@@ -50,7 +54,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         operation.desiredKeys = ["title"]
         operation.resultsLimit = 50
 
-        var newAlbums = [PhotoAlbum]()
+        var userAlbums = [PhotoAlbum]()
         
         tableView.reloadData()
 
@@ -58,13 +62,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             let album = PhotoAlbumController.sharedController.photoAlbum
             album?.cloudKitRecordID = record.recordID
             album?.title = record["title"] as! String
-            newAlbums.append(album!)
+            userAlbums.append(album!)
 
             operation.queryCompletionBlock = { [unowned self] (cursor, error) in
                 DispatchQueue.main.async {
                     if error == nil {
-                        self.photoAlbums = newAlbums
-                        print("these are the new albums\(newAlbums)")
+                        self.photoAlbums = userAlbums
+                        print("these are the new albums\(userAlbums)")
                         self.tableView.reloadData()
                     } else {
                         print("Fetch Failed")

@@ -16,7 +16,6 @@ extension UserController {
 
 class UserController {
     
-    let publicDatabase = CKContainer.default().publicCloudDatabase
     
     let currentUserWasSetNotification = Notification.Name("currentUserWasSet")
     
@@ -47,7 +46,7 @@ class UserController {
             let userRecord = CKRecord(user: user)
             
             CKContainer.default().publicCloudDatabase.save(userRecord){ (record, error) in
-                if let error = error { print("Error saving record\(error.localizedDescription)") }
+                if let error = error { print("Error saving record", error.localizedDescription) }
                 
                 guard let record = record, let currentUser = User(cloudKitRecord: record) else
                 {completion(false) ; return }

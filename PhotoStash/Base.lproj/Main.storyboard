@@ -124,7 +124,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="5so-ug-N16">
-                                <rect key="frame" x="47" y="81.666666666666686" width="281" height="243"/>
+                                <rect key="frame" x="47" y="82" width="281" height="243"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="finalStache" translatesAutoresizingMaskIntoConstraints="NO" id="Kbi-h5-OZY">
                                         <rect key="frame" x="0.0" y="0.0" width="281" height="100"/>
@@ -153,46 +153,46 @@
                                     <constraint firstItem="mBm-LV-Fmm" firstAttribute="width" secondItem="5so-ug-N16" secondAttribute="width" id="RM0-B8-FHE"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WO6-xm-DC4">
-                                <rect key="frame" x="46.333333333333343" y="354.33333333333331" width="281.33333333333326" height="36"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="20"/>
-                                <state key="normal" title="sign-up ">
-                                    <color key="titleColor" red="0.0" green="0.98106676339999999" blue="0.57369142770000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="signInTapped:" destination="fxp-hm-tqu" eventType="touchUpInside" id="Ffc-o0-16p"/>
-                                    <segue destination="3I6-k4-eEQ" kind="show" identifier="SignInSegue" id="LpF-w3-3zk"/>
-                                </connections>
-                            </button>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="ejw-Vj-DSc">
-                                <rect key="frame" x="177" y="339" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z5V-tG-r9m">
-                                <rect key="frame" x="46" y="388" width="282" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="20"/>
-                                <state key="normal" title="log-in">
-                                    <color key="titleColor" red="0.0" green="0.98106676339999999" blue="0.57369142770000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="logInTapped:" destination="fxp-hm-tqu" eventType="touchUpInside" id="be1-JH-MCc"/>
-                                    <action selector="signInTapped:" destination="fxp-hm-tqu" eventType="touchUpInside" id="Xpa-Zg-s62"/>
-                                    <segue destination="3I6-k4-eEQ" kind="show" identifier="SignInSegue" id="rLA-Oy-rlS"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="IEX-Cl-Bfw">
+                                <rect key="frame" x="113.66666666666669" y="335" width="148" height="36"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z5V-tG-r9m">
+                                        <rect key="frame" x="0.0" y="0.0" width="49" height="36"/>
+                                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="20"/>
+                                        <state key="normal" title="log-in">
+                                            <color key="titleColor" red="0.0" green="0.98106676339999999" blue="0.57369142770000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="logInTapped:" destination="fxp-hm-tqu" eventType="touchUpInside" id="be1-JH-MCc"/>
+                                            <action selector="signInTapped:" destination="fxp-hm-tqu" eventType="touchUpInside" id="Xpa-Zg-s62"/>
+                                        </connections>
+                                    </button>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="ejw-Vj-DSc">
+                                        <rect key="frame" x="58.999999999999986" y="8" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WO6-xm-DC4">
+                                        <rect key="frame" x="88.999999999999986" y="0.0" width="59.000000000000014" height="36"/>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="20"/>
+                                        <state key="normal" title="sign-up ">
+                                            <color key="titleColor" red="0.0" green="0.98106676339999999" blue="0.57369142770000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="signInTapped:" destination="fxp-hm-tqu" eventType="touchUpInside" id="Ffc-o0-16p"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="5so-ug-N16" firstAttribute="height" secondItem="t4a-fj-mcI" secondAttribute="height" multiplier="0.3" id="3d0-ZL-PNv"/>
                             <constraint firstItem="5so-ug-N16" firstAttribute="centerX" secondItem="t4a-fj-mcI" secondAttribute="centerX" id="9rd-ce-Pmi"/>
                             <constraint firstItem="5so-ug-N16" firstAttribute="centerY" secondItem="t4a-fj-mcI" secondAttribute="centerY" multiplier="0.5" id="FNm-fL-0Tg"/>
-                            <constraint firstItem="WO6-xm-DC4" firstAttribute="centerX" secondItem="5so-ug-N16" secondAttribute="centerX" id="OXH-rC-IAZ"/>
-                            <constraint firstItem="WO6-xm-DC4" firstAttribute="width" secondItem="t4a-fj-mcI" secondAttribute="width" multiplier="0.75" id="be8-zc-D5D"/>
+                            <constraint firstItem="IEX-Cl-Bfw" firstAttribute="top" secondItem="5so-ug-N16" secondAttribute="bottom" constant="10" id="OEj-CB-yfs"/>
+                            <constraint firstItem="IEX-Cl-Bfw" firstAttribute="centerX" secondItem="t4a-fj-mcI" secondAttribute="centerX" id="Ph3-CA-uZ9"/>
                             <constraint firstItem="5so-ug-N16" firstAttribute="width" secondItem="t4a-fj-mcI" secondAttribute="width" multiplier="0.75" id="hWh-yh-qTr"/>
-                            <constraint firstItem="WO6-xm-DC4" firstAttribute="top" secondItem="Xtx-jA-7M9" secondAttribute="bottom" constant="30" id="sXW-uZ-jtP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Jfs-yE-Ohd"/>
                     </view>
@@ -203,6 +203,7 @@
                         <outlet property="logInButton" destination="Z5V-tG-r9m" id="uL9-Ch-MZC"/>
                         <outlet property="signInButton" destination="WO6-xm-DC4" id="kcR-2g-qkY"/>
                         <outlet property="usernameTextField" destination="mBm-LV-Fmm" id="EK7-sj-bKP"/>
+                        <segue destination="3I6-k4-eEQ" kind="show" identifier="SignInSegue" id="JHn-lP-SMt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Ik-C7-Bb2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -506,6 +507,6 @@
         <image name="trashdelete" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="rLA-Oy-rlS"/>
+        <segue reference="JHn-lP-SMt"/>
     </inferredMetricsTieBreakers>
 </document>

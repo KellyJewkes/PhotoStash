@@ -61,7 +61,6 @@ class CKManager {
         queryCompletionBlock = { (queryCursor: CKQueryCursor?, error: Error?) -> Void in
             
             if let queryCursor = queryCursor {
-                // there are more results, go fetch them
                 
                 let continuedQueryOperation = CKQueryOperation(cursor: queryCursor)
                 continuedQueryOperation.recordFetchedBlock = perRecordBlock
