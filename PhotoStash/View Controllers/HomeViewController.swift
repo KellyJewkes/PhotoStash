@@ -29,7 +29,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let currentUser = UserController.sharedController.user else {return}
+        guard let currentUser = UserController.sharedController.currentUser else {return}
         CKContainer.default()
         loadAlbums()
        // tableView.clipsToBounds = true
@@ -103,7 +103,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     @IBAction func addNewStash(_ sender: Any) {
         addStashAlert()
-        //self.tableView.reloadData()
+        self.tableView.reloadData()
     }
     
     
@@ -125,7 +125,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 }
             })
             print(PhotoAlbumController.sharedController.photoAlbums.count)
-            //print(UserController.sharedController.user)
         })
         
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)

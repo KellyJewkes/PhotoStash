@@ -22,8 +22,9 @@ class SignUpViewController: UIViewController {
         activityIndicator.isHidden = true
         signInButton.clipsToBounds = true
         signInButton.layer.cornerRadius = 20
-        NotificationCenter.default.addObserver(self, selector: #selector(userCreated), name: User.customNotifications.userSet, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(userCreated), name: UserController.sharedController.currentUserWasSetNotification, object: nil)
     }
+    
     
     @objc func userCreated() {
         DispatchQueue.main.async {
@@ -43,11 +44,10 @@ class SignUpViewController: UIViewController {
         
         UserController.sharedController.createUserWith(username: username, email: email) { (success) in
             
-            self.activityIndicator.stopAnimating()
-            
             if !success {
                 DispatchQueue.main.async {
-                    self.presentSimpleAlert(title: "Unable to create an account", message: "Make sure you have a network connection, and please try again.")
+                    self.activityIndicator.stopAnimating()
+                    self.signInAlert(title: "Unable to create an account", message: "Make sure you have a network connection, and please try again.")
                     self.activityIndicator.stopAnimating()
                 }
                 return
@@ -55,18 +55,21 @@ class SignUpViewController: UIViewController {
         }
     }
     
+    
     @IBAction func logInTapped(_ sender: Any) {
         
-        guard UserController.sharedController.user == nil else {userCreated(); return }
+        guard UserController.sharedController.currentUser == nil else {userCreated(); return }
         
         activityIndicator.startAnimating()
+        
         UserController.sharedController.fetchCurrentUser { (success) in
             
             if !success {
+                
                 DispatchQueue.main.async {
                     self.activityIndicator.stopAnimating()
                     
-                    self.presentSimpleAlert(title: "No iCloud account configured", message: "Please navigate to your device's settings app and set up iCloud.")
+                    self.signInAlert(title: "Somethings not right", message: "couldn't fetch current user.")
                     self.activityIndicator.isHidden = true
                 }
                 return
@@ -75,7 +78,7 @@ class SignUpViewController: UIViewController {
     }
     
     
-    func presentSimpleAlert(title: String, message: String) {
+    func signInAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         let dismissAction = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
@@ -86,6 +89,4 @@ class SignUpViewController: UIViewController {
     }
     
 }
-
-
 

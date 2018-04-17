@@ -63,7 +63,6 @@ class User {
         
         return record
     }
-    
 }
 
 
@@ -73,7 +72,6 @@ extension CKRecord {
         let recordID = user.cloudKitRecordID ?? CKRecordID(recordName: UUID().uuidString)
         
         self.init(recordType: User.CKKeys.TypeKey, recordID: recordID)
-        
         
         self.setObject(user.username as CKRecordValue, forKey: User.CKKeys.usernameKey)
         self.setObject(user.email as CKRecordValue, forKey: User.CKKeys.emailKey)

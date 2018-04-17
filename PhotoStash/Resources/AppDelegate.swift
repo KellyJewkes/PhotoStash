@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        UserController.sharedController.fetchCurrentUser()
         // request notification permissions request
         let unc = UNUserNotificationCenter.current()
         unc.requestAuthorization(options: [.alert, .badge, .sound]) { (success, error) in
@@ -29,12 +30,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UIApplication.shared.registerForRemoteNotifications()
         
+        
         return true
     }
         
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
        // PhotoController.sharedController.fetch
-        
+
         completionHandler(UIBackgroundFetchResult.newData)
     }
 

@@ -150,7 +150,7 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
     
     func checkAlbumAndUser(){
         guard let currentAlbum = PhotoAlbumController.sharedController.photoAlbum?.title else {return}
-        guard let currentUser = UserController.sharedController.user?.username else {return}
+        guard let currentUser = UserController.sharedController.currentUser?.username else {return}
         print("the current album is \(currentAlbum) & the current user is \(currentUser)")
     }
     

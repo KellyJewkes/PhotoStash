@@ -10,16 +10,6 @@ import Foundation
 import  CloudKit
 import  UIKit
 
-//class CKManger {
-//    func fetchUserRecordID(completion: @escaping((CKRecordID?, Error?) -> Void )) {
-//        CKContainer.default().fetchUserRecordID(completionHandler: completion)
-//    }
-//
-//    //// note: this is set up in public DB. Need to change to shared or private? ////
-//    func save(user: User, completion: @escaping((CKRecord?, Error?) -> Void )) {
-//        let record = CKRecord(user: user)
-//        CKContainer.default().publicCloudDatabase.save(record, completionHandler: completion)
-//    }
 private let CreatorUserRecordIDKey = "creatorUserRecordID"
 
 class CKManager {
