@@ -17,12 +17,17 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var logInButton: UIButton!
     
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+         NotificationCenter.default.addObserver(self, selector: #selector(userCreated), name: UserController.sharedController.currentUserWasSetNotification, object: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         activityIndicator.isHidden = true
         signInButton.clipsToBounds = true
         signInButton.layer.cornerRadius = 20
-        NotificationCenter.default.addObserver(self, selector: #selector(userCreated), name: UserController.sharedController.currentUserWasSetNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(userCreated), name: UserController.sharedController.currentUserWasSetNotification, object: nil)
     }
     
     
