@@ -41,11 +41,10 @@ class PhotoAlbum {
     
     
     init?(cloudKitRecord: CKRecord) {
-        guard let title = cloudKitRecord[PhotoAlbum.CKKeys.titleKey] as? String,
-            let userReference = cloudKitRecord[PhotoAlbum.CKKeys.userReferenceKey] as? CKReference else {return nil}
+        guard let title = cloudKitRecord[PhotoAlbum.CKKeys.titleKey] as? String else {return nil}
         
         self.title = title
-        self.userReference = userReference
+        self.userReference = cloudKitRecord[PhotoAlbum.CKKeys.userReferenceKey] as? CKReference
         self.cloudKitRecordID = cloudKitRecord.recordID
     }
     

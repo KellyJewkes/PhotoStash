@@ -45,33 +45,38 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     // -------------------------------------------------
     
     func fetchAlbums() {
+        
         let predicate = NSPredicate(value: true)
         let sort = NSSortDescriptor(key: "title", ascending: true)
         let query = CKQuery(recordType: "PhotoAlbum", predicate: predicate)
         query.sortDescriptors = [sort]
         let operation = CKQueryOperation(query: query)
         operation.desiredKeys = ["title"]
-        //operation.resultsLimit = 10
+        operation.resultsLimit = 10
         
-        var userAlbums = [PhotoAlbum]()
-        
+        var userAlbums = PhotoAlbumController.sharedController.photoAlbums
         
         operation.recordFetchedBlock = { record in
             
-            guard let album = PhotoAlbumController.sharedController.photoAlbum else {return}
-            album.cloudKitRecordID = record.recordID
-            album.title = record["title"] as! String
-            userAlbums.append(album)
+                print("this is the record \(record)")
+                
+            guard let thisAlbum = PhotoAlbum(cloudKitRecord: record) else {return}
+                
+                print("this is the album title \(thisAlbum.title)")
             
-            operation.queryCompletionBlock = { [unowned self] (cursor, error) in
-                DispatchQueue.main.async {
-                    if error == nil {
-                        self.photoAlbums = userAlbums
-                        print("these are the new albums\(userAlbums)")
-                        self.tableView.reloadData()
-                    } else {
-                        print("Fetch Failed")
-                    }
+//            thisAlbum.cloudKitRecordID = record.recordID
+//            thisAlbum.title = record["title"] as! String
+            
+            userAlbums.append(thisAlbum)
+        }
+        operation.queryCompletionBlock = { cursor, error in
+            DispatchQueue.main.async {
+                if error == nil {
+                    PhotoAlbumController.sharedController.photoAlbums = userAlbums
+                    print("these are the user's albums \(userAlbums)")
+                    self.tableView.reloadData()
+                } else {
+                    print("Fetch Failed")
                 }
             }
         }

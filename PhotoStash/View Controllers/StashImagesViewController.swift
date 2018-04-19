@@ -127,6 +127,12 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
 //    }
     
     
+    func fetchImages(){
+        let predicate = NSPredicate(value: true)
+        let sort = NSSortDescriptor(key: <#T##String?#>, ascending: <#T##Bool#>)
+    }
+    
+    
     // -------------------------------------------------
     // MARK: - Collection View Functions
     // -------------------------------------------------

@@ -26,7 +26,6 @@ class PhotoAlbumController {
     
     var photoAlbum: PhotoAlbum? {
         didSet {
-            
         }
     }
     
