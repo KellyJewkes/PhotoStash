@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CloudKit
 
 class DetailImageViewController: UIViewController {
     
@@ -18,12 +19,7 @@ class DetailImageViewController: UIViewController {
     @IBOutlet weak var downloadButton: UIButton!
     
     
-    var detailPhoto: Photo? {
-        didSet {
-            updateViews()
-        }
-    }
-    
+    var detailPhoto: Photo?
     
     func updateViews() {
         detailImageView.image = detailPhoto?.image
@@ -33,6 +29,7 @@ class DetailImageViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         detailImageView.image = detailPhoto?.image
+        updateViews()
     }
     
     
@@ -42,7 +39,8 @@ class DetailImageViewController: UIViewController {
 
     
     @IBAction func deleteButtonTapped(_ sender: Any) {
-    //    guard let currentPhoto = detailPhoto else {return}
+        deleteAlert()
+        
     }
     
     
@@ -73,9 +71,42 @@ class DetailImageViewController: UIViewController {
             ac.addAction(UIAlertAction(title: "OK", style: .default))
             present(ac, animated: true)
         } else {
-            let ac = UIAlertController(title: "Saved!", message: "Your altered image has been saved to your photos.", preferredStyle: .alert)
+            let ac = UIAlertController(title: "Saved!", message: "Your image has been saved to your photos.", preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "OK", style: .default))
             present(ac, animated: true)
         }
+    }
+
+    func deleteAlert(){
+        
+        let alertController = UIAlertController(title: "Delete this photo", message: "Warning! This can not be undone!", preferredStyle: .alert)
+        
+        let deleteAlbum = UIAlertAction(title: "DELETE", style: .destructive, handler:{(action: UIAlertAction)-> Void in
+            
+            guard let record = self.detailPhoto?.cloudKitRecordID else {return}
+            
+            CKManager.shared.deleteRecordWithID(record, completion: { (record, error) in
+                if let error = error {
+                    print("Error deleting a single photo \(error)")
+                } else {
+                    if let record = record {
+                        print("Photo was deleted")
+                    }
+                }
+            })
+            
+            self.navigationController?.popViewController(animated: true)
+        })
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alertController.addAction(deleteAlbum)
+        alertController.addAction(cancel)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    @IBAction func deleteAlbum(_ sender: Any) {
+        deleteAlert()
     }
 }

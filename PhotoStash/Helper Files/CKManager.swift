@@ -85,10 +85,14 @@ class CKManager {
         }
     }
     
-    
-    func deleteRecordWithID(_ recordID: CKRecordID, database: CKDatabase, completion: ((_ recordID: CKRecordID?, _ error: Error?) -> Void)?) {
+    func delete(withRecordID recordID: CKRecordID,
+                completionHandler: @escaping (CKRecordID?, Error?) -> Void) {
         
-        database.delete(withRecordID: recordID) { (recordID, error) in
+    }
+    
+    func deleteRecordWithID(_ recordID: CKRecordID, completion: ((_ recordID: CKRecordID?, _ error: Error?) -> Void)?) {
+        
+        publicDatabase.delete(withRecordID: recordID) { (recordID, error) in
             completion?(recordID, error)
         }
     }

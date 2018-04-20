@@ -22,11 +22,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableView.reloadData()
+        //tableView.reloadData()
         //navTitleImage()
         self.navigationItem.setHidesBackButton(true, animated: false)
     }
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let currentUser = UserController.sharedController.currentUser else {return}
@@ -45,7 +45,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     // -------------------------------------------------
     
     func fetchAlbums() {
-        
+       PhotoAlbumController.sharedController.photoAlbums.removeAll()
         let predicate = NSPredicate(value: true)
         let sort = NSSortDescriptor(key: "title", ascending: true)
         let query = CKQuery(recordType: "PhotoAlbum", predicate: predicate)
@@ -58,25 +58,25 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         operation.recordFetchedBlock = { record in
             
-                print("this is the record \(record)")
-                
-            guard let thisAlbum = PhotoAlbum(cloudKitRecord: record) else {return}
-                
-                print("this is the album title \(thisAlbum.title)")
+            print("this is the record album \(record)")
             
-//            thisAlbum.cloudKitRecordID = record.recordID
-//            thisAlbum.title = record["title"] as! String
+            guard let thisAlbum = PhotoAlbum(cloudKitRecord: record) else {return}
+            
+            print("this is the album title \(thisAlbum.title)")
+            
+            //            thisAlbum.cloudKitRecordID = record.recordID
+            //            thisAlbum.title = record["title"] as! String
             
             userAlbums.append(thisAlbum)
         }
         operation.queryCompletionBlock = { cursor, error in
             DispatchQueue.main.async {
-                if error == nil {
+                if let error = error {
+                    print("Album Fetch Failed \(String(describing: error))")
+                } else {
                     PhotoAlbumController.sharedController.photoAlbums = userAlbums
                     print("these are the user's albums \(userAlbums)")
                     self.tableView.reloadData()
-                } else {
-                    print("Fetch Failed")
                 }
             }
         }
@@ -157,6 +157,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "StashNameCell", for: indexPath)
         let photoAlbum = PhotoAlbumController.sharedController.photoAlbums[indexPath.row]
         cell.textLabel?.text = photoAlbum.title
+        
         return cell
     }
     

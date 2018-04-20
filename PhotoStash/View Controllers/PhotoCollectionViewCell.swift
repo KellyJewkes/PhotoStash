@@ -23,10 +23,6 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     func updateViews(){
         cellImage.image = photo?.image
     }
-    
-    
-    @IBAction func cellButtonTapped(_ sender: Any) {
-    }
 }
 
 

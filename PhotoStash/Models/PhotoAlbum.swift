@@ -19,6 +19,7 @@ class PhotoAlbum {
     var users: [User] = []
     var recordType: String { return PhotoAlbum.CKKeys.typeKey }
     var cloudKitRecordID: CKRecordID?
+    
     weak var user: User?
     
     enum CKKeys {
@@ -39,7 +40,7 @@ class PhotoAlbum {
         self.userReference = userReference
     }
     
-    
+    //Failable init
     init?(cloudKitRecord: CKRecord) {
         guard let title = cloudKitRecord[PhotoAlbum.CKKeys.titleKey] as? String else {return nil}
         

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CloudKit
 
 class StashImagesViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -14,6 +15,7 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
     var photos: [Photo] = []
     var photoAlbums: [PhotoAlbum] = []
     
+    @IBOutlet weak var activityInd: UIActivityIndicatorView!
     @IBOutlet weak var stashNameLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var addImage: UIButton!
@@ -33,6 +35,7 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
     
     override func viewDidLoad() {
         //navTitleImage()
+        fetchImages()
         super.viewDidLoad()
         holderView.clipsToBounds = true
         holderView.layer.cornerRadius = 20
@@ -40,6 +43,7 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         checkAlbumAndUser()
+        collectionView.reloadData()
     }
     
     
@@ -128,8 +132,39 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
     
     
     func fetchImages(){
+        PhotoController.sharedController.photos.removeAll()
         let predicate = NSPredicate(value: true)
-        let sort = NSSortDescriptor(key: <#T##String?#>, ascending: <#T##Bool#>)
+        //let sort = NSSortDescriptor(key: "foo", ascending: foo)
+        let query = CKQuery(recordType: "Photo", predicate: predicate)
+        let operation = CKQueryOperation(query: query)
+        //operation.desiredKeys = []
+        operation.resultsLimit = 100
+        
+        var albumPhotos = PhotoController.sharedController.photos
+        
+        operation.recordFetchedBlock = { record in
+            print("This is the photo record \(record)")
+            
+            guard let thisPhoto = Photo(record: record) else {return}
+            
+            print("this is the photo data \(String(describing: thisPhoto.imageData))")
+            
+            albumPhotos.append(thisPhoto)
+            
+        }
+        operation.queryCompletionBlock = { cursor, error in
+            DispatchQueue.main.async {
+                if let error = error {
+                    print("Photo fetch failed \(error)")
+                } else {
+                    PhotoController.sharedController.photos = albumPhotos
+                    print("These are the album's photos \(albumPhotos)")
+                    self.collectionView.reloadData()
+                    self.activityInd.isHidden = true
+                }
+            }
+        }
+    CKContainer.default().publicCloudDatabase.add(operation)
     }
     
     
@@ -139,23 +174,17 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("This is how many photos are in the album \(String(describing: photoAlbum?.photos?.count))")
-        return photoAlbum?.photos?.count ?? 0
+        print("This is how many photos are in the album \(String(describing: PhotoController.sharedController.photos.count))")
+        return PhotoController.sharedController.photos.count ?? 0
     }
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "newImageCell", for: indexPath) as? PhotoCollectionViewCell else { return UICollectionViewCell()}
-        let photo = photoAlbum?.photos?[indexPath.item]
-        cell.cellImage.image = photo?.image
+        let photo = PhotoController.sharedController.photos[indexPath.item]
+        cell.cellImage.image = photo.image
         return cell
     }
-    
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "toDetailImageView", sender: self)
-    }
-    
     
     func checkAlbumAndUser(){
         guard let currentAlbum = PhotoAlbumController.sharedController.photoAlbum?.title else {return}

@@ -16,7 +16,7 @@ class Photo {
     static let typeKey = "Photo"
     static let imageDataKey = "imageData"
     private let photoAlbumReferenceKey = "photoAlbumReference"
-    
+    private let timeStampKey = "timeStamp"
     
     var photoAlbum: PhotoAlbum?
     let imageData: Data?

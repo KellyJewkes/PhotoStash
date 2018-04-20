@@ -22,10 +22,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="58B-CD-fCH" userLabel="Holder View">
-                                <rect key="frame" x="8" y="88" width="359" height="690"/>
+                                <rect key="frame" x="8" y="44" width="359" height="734"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4MG-ne-m9I">
-                                        <rect key="frame" x="0.0" y="56.333333333333314" width="359" height="575.66666666666674"/>
+                                        <rect key="frame" x="0.0" y="58.666666666666686" width="359" height="617.33333333333326"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="separatorColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="sectionIndexColor" red="0.96635555790000005" green="0.1126184076" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -65,7 +65,7 @@
                                         </connections>
                                     </tableView>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Mp-n6-qxA">
-                                        <rect key="frame" x="154.66666666666666" y="640" width="50" height="50"/>
+                                        <rect key="frame" x="154.66666666666666" y="684" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="ANC-Yj-Uhi"/>
                                             <constraint firstAttribute="height" constant="50" id="gSF-el-v0F"/>
@@ -78,7 +78,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stache List" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="faE-I2-kex">
-                                        <rect key="frame" x="131.33333333333334" y="21" width="95.666666666666657" height="27.333333333333329"/>
+                                        <rect key="frame" x="131.33333333333334" y="23.333333333333329" width="95.666666666666657" height="27.333333333333329"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -219,16 +219,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tjQ-ro-S2M">
-                                <rect key="frame" x="8" y="88" width="359" height="690"/>
+                                <rect key="frame" x="8" y="44" width="359" height="734"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Event Name)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pdy-9e-p8H">
-                                        <rect key="frame" x="119.66666666666666" y="20.666666666666671" width="120.66666666666666" height="27.333333333333329"/>
+                                        <rect key="frame" x="119.66666666666666" y="23" width="120.66666666666666" height="27.333333333333329"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
                                         <color key="textColor" red="0.0" green="0.98106676339999999" blue="0.57369142770000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="IhW-4f-BPH">
-                                        <rect key="frame" x="0.0" y="56" width="359" height="568"/>
+                                        <rect key="frame" x="0.0" y="58.333333333333314" width="359" height="609.66666666666674"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6GE-Ka-Vep">
                                             <size key="itemSize" width="82" height="82"/>
@@ -236,6 +236,10 @@
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
+                                        <activityIndicatorView key="backgroundView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" id="IBD-aN-dhJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="359" height="609.66666666666674"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </activityIndicatorView>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="newImageCell" id="VCq-6x-cRR" customClass="PhotoCollectionViewCell" customModule="Photo_Stash" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
@@ -247,31 +251,19 @@
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LpM-zj-oVt">
                                                             <rect key="frame" x="0.0" y="0.0" width="70" height="71"/>
                                                         </imageView>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="75u-vh-z2p">
-                                                            <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
-                                                            <color key="backgroundColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <connections>
-                                                                <segue destination="Q0S-Xh-anP" kind="show" identifier="toDetailImageView" id="cM7-2k-xtm"/>
-                                                            </connections>
-                                                        </button>
                                                     </subviews>
                                                 </view>
                                                 <constraints>
-                                                    <constraint firstItem="75u-vh-z2p" firstAttribute="centerY" secondItem="VCq-6x-cRR" secondAttribute="centerY" id="1o0-Yv-F5q"/>
-                                                    <constraint firstAttribute="trailing" secondItem="75u-vh-z2p" secondAttribute="trailing" id="8rb-HP-LmW"/>
                                                     <constraint firstItem="LpM-zj-oVt" firstAttribute="leading" secondItem="VCq-6x-cRR" secondAttribute="leading" id="GkV-ef-csy"/>
-                                                    <constraint firstAttribute="bottom" secondItem="75u-vh-z2p" secondAttribute="bottom" id="HUH-4a-iym"/>
                                                     <constraint firstItem="LpM-zj-oVt" firstAttribute="centerY" secondItem="VCq-6x-cRR" secondAttribute="centerY" id="WJx-I7-O7q"/>
-                                                    <constraint firstItem="75u-vh-z2p" firstAttribute="top" secondItem="VCq-6x-cRR" secondAttribute="top" id="fBg-0B-lgD"/>
                                                     <constraint firstAttribute="trailing" secondItem="LpM-zj-oVt" secondAttribute="trailing" id="fFD-xI-kSe"/>
-                                                    <constraint firstItem="75u-vh-z2p" firstAttribute="leading" secondItem="VCq-6x-cRR" secondAttribute="leading" id="hyu-mX-d5W"/>
                                                     <constraint firstItem="LpM-zj-oVt" firstAttribute="centerX" secondItem="VCq-6x-cRR" secondAttribute="centerX" id="j3A-yc-rfk"/>
-                                                    <constraint firstItem="75u-vh-z2p" firstAttribute="centerX" secondItem="VCq-6x-cRR" secondAttribute="centerX" id="kXz-DU-2vH"/>
                                                     <constraint firstItem="LpM-zj-oVt" firstAttribute="top" secondItem="VCq-6x-cRR" secondAttribute="top" id="y5a-1c-Cia"/>
                                                 </constraints>
                                                 <size key="customSize" width="70" height="70"/>
                                                 <connections>
                                                     <outlet property="cellImage" destination="LpM-zj-oVt" id="EkN-rc-l3a"/>
+                                                    <segue destination="Q0S-Xh-anP" kind="show" identifier="toDetailImageView" id="S6O-eq-9Ii"/>
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
@@ -281,7 +273,7 @@
                                         </connections>
                                     </collectionView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="qd9-Pe-onw">
-                                        <rect key="frame" x="8" y="632" width="343" height="50"/>
+                                        <rect key="frame" x="8" y="676" width="343" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nXz-Tf-LzY">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -359,6 +351,7 @@
                         <viewLayoutGuide key="safeArea" id="6zP-0a-Wg9"/>
                     </view>
                     <connections>
+                        <outlet property="activityInd" destination="IBD-aN-dhJ" id="8Hd-XZ-Xph"/>
                         <outlet property="addImage" destination="mjF-e1-qK1" id="XBx-sq-24H"/>
                         <outlet property="collectionView" destination="IhW-4f-BPH" id="vSk-XH-eST"/>
                         <outlet property="holderView" destination="tjQ-ro-S2M" id="2w5-ki-8V9"/>
@@ -378,7 +371,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1nI-mm-PaY">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1nI-mm-PaY">
                                 <rect key="frame" x="16" y="173.66666666666663" width="343" height="343"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="1nI-mm-PaY" secondAttribute="height" multiplier="1:1" id="PUY-je-AbX"/>
@@ -507,6 +500,6 @@
         <image name="trashdelete" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="JHn-lP-SMt"/>
+        <segue reference="7E7-3r-p9Y"/>
     </inferredMetricsTieBreakers>
 </document>

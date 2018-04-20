@@ -6,59 +6,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PhotoStash/Helper Files/CameraPhotoHandler.swift"
-            timestampString = "545679712.399814"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
-            landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PhotoStash/Helper Files/CameraPhotoHandler.swift"
-            timestampString = "545679712.399891"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
-            landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PhotoStash/Helper Files/CameraPhotoHandler.swift"
-            timestampString = "545679712.3999439"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PhotoStash/Helper Files/CKManager.swift"
-            timestampString = "545697598.094359"
+            timestampString = "545938600.199904"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "27"
@@ -166,134 +118,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PhotoStash/View Controllers/SignUpViewController.swift"
-            timestampString = "545855017.424057"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "logInTapped(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PhotoStash/View Controllers/SignUpViewController.swift"
-            timestampString = "545855017.424127"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
-            landmarkName = "logInTapped(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Photo_Stash.SignUpViewController.logInTapped(Any) -&gt; ()"
-                  moduleName = "Photo Stash"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kdjewkes/Desktop/PhotoStash/PhotoStash/View%20Controllers/SignUpViewController.swift"
-                  timestampString = "545757457.218773"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "70"
-                  endingLineNumber = "70"
-                  offsetFromSymbolStart = "410">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Bool) -&gt; () in Photo_Stash.SignUpViewController.logInTapped(Any) -&gt; ()"
-                  moduleName = "Photo Stash"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kdjewkes/Desktop/PhotoStash/PhotoStash/View%20Controllers/SignUpViewController.swift"
-                  timestampString = "545757457.221368"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "72"
-                  endingLineNumber = "72"
-                  offsetFromSymbolStart = "25">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PhotoStash/View Controllers/PhotoCollectionViewCell.swift"
-            timestampString = "545851573.72576"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16"
-            landmarkName = "photo"
-            landmarkType = "24">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Photo_Stash.PhotoCollectionViewCell.init(frame: __C.CGRect) -&gt; Photo_Stash.PhotoCollectionViewCell"
-                  moduleName = "Photo Stash"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kdjewkes/Desktop/PhotoStash/PhotoStash/View%20Controllers/PhotoCollectionViewCell.swift"
-                  timestampString = "545855004.375864"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "16"
-                  endingLineNumber = "16"
-                  offsetFromSymbolStart = "243">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Photo_Stash.PhotoCollectionViewCell.init(coder: __ObjC.NSCoder) -&gt; Swift.Optional&lt;Photo_Stash.PhotoCollectionViewCell&gt;"
-                  moduleName = "Photo Stash"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kdjewkes/Desktop/PhotoStash/PhotoStash/View%20Controllers/PhotoCollectionViewCell.swift"
-                  timestampString = "545855004.378073"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "16"
-                  endingLineNumber = "16"
-                  offsetFromSymbolStart = "173">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PhotoStash/View Controllers/PhotoCollectionViewCell.swift"
-            timestampString = "545851573.725818"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
-            landmarkName = "photo"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -326,127 +150,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PhotoStash/View Controllers/SignUpViewController.swift"
-            timestampString = "545855017.424233"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PhotoStash/Model Controllers/PhotoAlbumController.swift"
-            timestampString = "545855017.424284"
+            filePath = "PhotoStash/View Controllers/PhotoCollectionViewCell.swift"
+            timestampString = "545938600.200381"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
-            landmarkName = "photoAlbum"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "photo"
             landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PhotoStash/Model Controllers/PhotoAlbumController.swift"
-            timestampString = "545855017.424399"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "PhotoAlbumController"
-            landmarkType = "3">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Photo_Stash.PhotoAlbumController.photoAlbums.getter : Swift.Array&lt;Photo_Stash.PhotoAlbum&gt;"
-                  moduleName = "Photo Stash"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kdjewkes/Desktop/PhotoStash/PhotoStash/Model%20Controllers/PhotoAlbumController.swift"
-                  timestampString = "545855004.408195"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "24"
-                  endingLineNumber = "24"
-                  offsetFromSymbolStart = "84">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Photo_Stash.PhotoAlbumController.photoAlbums.setter : Swift.Array&lt;Photo_Stash.PhotoAlbum&gt;"
-                  moduleName = "Photo Stash"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kdjewkes/Desktop/PhotoStash/PhotoStash/Model%20Controllers/PhotoAlbumController.swift"
-                  timestampString = "545855004.410583"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "24"
-                  endingLineNumber = "24"
-                  offsetFromSymbolStart = "98">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Photo_Stash.PhotoAlbumController.init() -&gt; Photo_Stash.PhotoAlbumController"
-                  moduleName = "Photo Stash"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kdjewkes/Desktop/PhotoStash/PhotoStash/Model%20Controllers/PhotoAlbumController.swift"
-                  timestampString = "545855004.412794"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "24"
-                  endingLineNumber = "24"
-                  offsetFromSymbolStart = "173">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PhotoStash/Model Controllers/PhotoAlbumController.swift"
-            timestampString = "545855017.424494"
+            filePath = "PhotoStash/View Controllers/StashImagesViewController.swift"
+            timestampString = "545938600.200585"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "createPhotoAlbumWith(title:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PhotoStash/View Controllers/HomeViewController.swift"
-            timestampString = "545855017.424592"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "fetchAlbums()"
+            startingLineNumber = "202"
+            endingLineNumber = "202"
+            landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -456,13 +185,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PhotoStash/View Controllers/HomeViewController.swift"
-            timestampString = "545855017.425337"
+            filePath = "PhotoStash/View Controllers/StashImagesViewController.swift"
+            timestampString = "545938600.200802"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
+            landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -472,44 +201,60 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PhotoStash/View Controllers/HomeViewController.swift"
-            timestampString = "545855017.425974"
+            filePath = "PhotoStash/View Controllers/DetailImageViewController.swift"
+            timestampString = "545938600.201032"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
-            landmarkName = "HomeViewController"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PhotoStash/View Controllers/DetailImageViewController.swift"
+            timestampString = "545938600.201254"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "DetailImageViewController"
             landmarkType = "3">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Photo_Stash.HomeViewController.fetchAlbums() -&gt; ()"
+                  symbolName = "Photo_Stash.DetailImageViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; Photo_Stash.DetailImageViewController"
                   moduleName = "Photo Stash"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kdjewkes/Desktop/PhotoStash/PhotoStash/View%20Controllers/HomeViewController.swift"
-                  timestampString = "545855004.427309"
+                  urlString = "file:///Users/kdjewkes/Desktop/PhotoStash/PhotoStash/View%20Controllers/DetailImageViewController.swift"
+                  timestampString = "545865011.510042"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "99"
-                  endingLineNumber = "99"
-                  offsetFromSymbolStart = "1146">
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "767">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (Swift.Optional&lt;__ObjC.CKQueryCursor&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Photo_Stash.HomeViewController.fetchAlbums() -&gt; ()"
+                  symbolName = "Photo_Stash.DetailImageViewController.init(coder: __ObjC.NSCoder) -&gt; Swift.Optional&lt;Photo_Stash.DetailImageViewController&gt;"
                   moduleName = "Photo Stash"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kdjewkes/Desktop/PhotoStash/PhotoStash/View%20Controllers/HomeViewController.swift"
-                  timestampString = "545855004.429453"
+                  urlString = "file:///Users/kdjewkes/Desktop/PhotoStash/PhotoStash/View%20Controllers/DetailImageViewController.swift"
+                  timestampString = "545865011.51265"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "84"
-                  endingLineNumber = "84"
-                  offsetFromSymbolStart = "21">
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "680">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -520,29 +265,108 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PhotoStash/View Controllers/HomeViewController.swift"
-            timestampString = "545855017.426288"
+            filePath = "PhotoStash/View Controllers/StashImagesViewController.swift"
+            timestampString = "545938600.201394"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
-            landmarkName = "HomeViewController"
+            startingLineNumber = "204"
+            endingLineNumber = "204"
+            landmarkName = "prepare(for:sender:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PhotoStash/View Controllers/StashImagesViewController.swift"
+            timestampString = "545938600.2015311"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "201"
+            endingLineNumber = "201"
+            landmarkName = "prepare(for:sender:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PhotoStash/Helper Files/CameraPhotoHandler.swift"
+            timestampString = "545938600.201721"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "CameraPhotoHandler"
             landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Photo_Stash.CameraPhotoHandler.imagePickedBlock.getter : Swift.Optional&lt;(__ObjC.UIImage) -&gt; ()&gt;"
+                  moduleName = "Photo Stash"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kdjewkes/Desktop/PhotoStash/PhotoStash/Helper%20Files/CameraPhotoHandler.swift"
+                  timestampString = "545938600.423038"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "104">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Photo_Stash.CameraPhotoHandler.imagePickedBlock.setter : Swift.Optional&lt;(__ObjC.UIImage) -&gt; ()&gt;"
+                  moduleName = "Photo Stash"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kdjewkes/Desktop/PhotoStash/PhotoStash/Helper%20Files/CameraPhotoHandler.swift"
+                  timestampString = "545938600.424816"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "148">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Photo_Stash.CameraPhotoHandler.init() -&gt; Photo_Stash.CameraPhotoHandler"
+                  moduleName = "Photo Stash"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kdjewkes/Desktop/PhotoStash/PhotoStash/Helper%20Files/CameraPhotoHandler.swift"
+                  timestampString = "545938600.426712"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "384">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PhotoStash/View Controllers/HomeViewController.swift"
-            timestampString = "545855017.426581"
+            timestampString = "545938600.202318"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
-            landmarkName = "fetchAlbums()"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "viewWillAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -552,13 +376,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PhotoStash/View Controllers/HomeViewController.swift"
-            timestampString = "545855017.4268709"
+            filePath = "PhotoStash/Helper Files/CameraPhotoHandler.swift"
+            timestampString = "545938600.202469"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
-            landmarkName = "fetchAlbums()"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "usePhotoLibrary()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -568,30 +392,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PhotoStash/View Controllers/HomeViewController.swift"
-            timestampString = "545855017.4270951"
+            filePath = "PhotoStash/Helper Files/CameraPhotoHandler.swift"
+            timestampString = "545938600.202862"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "HomeViewController"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PhotoStash/Models/PhotoAlbum.swift"
-            timestampString = "545855017.427318"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
-            landmarkName = "init(cloudKitRecord:)"
-            landmarkType = "7">
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "CameraPhotoHandler"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
