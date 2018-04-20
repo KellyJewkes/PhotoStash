@@ -89,7 +89,7 @@ class DetailImageViewController: UIViewController {
                 if let error = error {
                     print("Error deleting a single photo \(error)")
                 } else {
-                    if let record = record {
+                    if record != nil {
                         print("Photo was deleted")
                     }
                 }

@@ -157,6 +157,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "StashNameCell", for: indexPath)
         let photoAlbum = PhotoAlbumController.sharedController.photoAlbums[indexPath.row]
         cell.textLabel?.text = photoAlbum.title
+        cell.detailTextLabel?.text = ""
         
         return cell
     }

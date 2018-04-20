@@ -28,6 +28,7 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
     
     
     override func viewWillAppear(_ animated: Bool) {
+        collectionView.reloadData()
         super.viewWillAppear(animated)
         self.navigationItem.setHidesBackButton(true, animated: false)
     }
@@ -52,7 +53,7 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
     // -------------------------------------------------
     
     @IBAction func inviteButtonTapped(_ sender: Any) {
-        let shareVC = UIActivityViewController(activityItems: ["link to this album"], applicationActivities: nil)
+        let shareVC = UIActivityViewController(activityItems: ["This will be a URL link to this album"], applicationActivities: nil)
         shareVC.popoverPresentationController?.sourceView = self.view
         self.present(shareVC, animated: true, completion: nil)
     }
@@ -88,7 +89,19 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
         let alertController = UIAlertController(title: "Delete this album", message: "Warning! This can not be undone!", preferredStyle: .alert)
         
         let deleteAlbum = UIAlertAction(title: "DELETE", style: .destructive, handler:{(action: UIAlertAction)-> Void in
-            //guard let photoAlbum = self.photoAlbum else {return}
+            
+            guard let record = self.photoAlbum?.cloudKitRecordID else {return}
+            
+            CKManager.shared.deleteRecordWithID(record, completion: { (record, error) in
+                if let error = error {
+                    print("Error deleting a photoAlbum \(error)")
+                } else {
+                    if record != nil {
+                        print("PhotoAlbum was deleted")
+                    }
+                }
+            })
+            
             self.navigationController?.popViewController(animated: true)
         })
         
