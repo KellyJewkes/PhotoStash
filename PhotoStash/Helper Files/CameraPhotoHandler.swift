@@ -9,6 +9,9 @@
 import Foundation
 import UIKit
 import CloudKit
+import AVFoundation
+import MobileCoreServices
+import Photos
 
 class CameraPhotoHandler: NSObject {
     
@@ -30,7 +33,6 @@ class CameraPhotoHandler: NSObject {
         }
     }
     
-    
     // MARK: - to access photo library
     func usePhotoLibrary() {
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
@@ -39,6 +41,15 @@ class CameraPhotoHandler: NSObject {
             currentVC?.present(myPickerController, animated: true, completion: nil)
         }
     }
+    
+    //    func useVideoLibrabry(){
+    //        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+    //            myPickerController.delegate = self
+    //            myPickerController.sourceType = .photoLibrary
+    //            myPickerController.mediaTypes = [kUTTypeMovie as String, kUTTypeVideo as String]
+    //            currentVC?.present(myPickerController, animated: true, completion: nil)
+    //        }
+    //    }
     
     
     func showActionSheet(vc: UIViewController) {
@@ -52,6 +63,10 @@ class CameraPhotoHandler: NSObject {
         cameraPhotoActionSheet.addAction(UIAlertAction(title: "Your Photos", style: .default, handler: { (alert:UIAlertAction) -> Void in
             self.usePhotoLibrary()
         }))
+        
+//        cameraPhotoActionSheet.addAction(UIAlertAction(title: "Your videos", style: .default, handler: { (alert:UIAlertAction) -> Void in
+//            self.useVideoLibrabry()
+//        }))
         
         cameraPhotoActionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         

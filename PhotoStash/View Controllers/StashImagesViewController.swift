@@ -28,31 +28,37 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
     
     
     override func viewWillAppear(_ animated: Bool) {
-        collectionView.reloadData()
         super.viewWillAppear(animated)
+        collectionView.reloadData()
+        fetchImages()
+        navTitleImage()
         self.navigationItem.setHidesBackButton(true, animated: false)
     }
     
     
     override func viewDidLoad() {
-        //navTitleImage()
-        fetchImages()
+        //fetchImages()
         super.viewDidLoad()
+        setupview()
+        checkAlbumAndUser()
+        collectionView.reloadData()
+    }
+    
+    func setupview(){
         holderView.clipsToBounds = true
         holderView.layer.cornerRadius = 20
         stashNameLabel.text = photoAlbum?.title
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
-        checkAlbumAndUser()
-        collectionView.reloadData()
+        
     }
-    
-    
     // -------------------------------------------------
     // MARK: - Invite & share button
     // -------------------------------------------------
     
+    
     @IBAction func inviteButtonTapped(_ sender: Any) {
+        fetchImages()
         let shareVC = UIActivityViewController(activityItems: ["This will be a URL link to this album"], applicationActivities: nil)
         shareVC.popoverPresentationController?.sourceView = self.view
         self.present(shareVC, animated: true, completion: nil)
@@ -69,14 +75,10 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
         CameraPhotoHandler.shared.imagePickedBlock = { (image) in
             //DispatchQueue.main.async {
             PhotoController.sharedController.createPhotoWith(image: image, completion: { (photo) in
-            
+                //self.collectionView.reloadData()
             })
-            
-                self.collectionView.reloadData()
-            }
-       
+        }
     }
-    
     
     
     // -------------------------------------------------
@@ -103,6 +105,7 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
             })
             
             self.navigationController?.popViewController(animated: true)
+            
         })
         
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -123,32 +126,33 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
     // -------------------------------------------------
     
     
-//    func navTitleImage() {
-//        let navController = navigationController!
-//        
-//        self.navigationItem.setHidesBackButton(true, animated: false)
-//        
-//        let image = #imageLiteral(resourceName: "finalStache")
-//        let imageView = UIImageView(image: image)
-//        
-//        let bannerWidth = navController.navigationBar.frame.size.width
-//        let bannerHeight = navController.navigationBar.frame.size.height
-//        
-//        let bannerX = bannerWidth / 2 - image.size.width / 2
-//        let bannerY = bannerHeight / 2 - image.size.height / 2
-//        
-//        imageView.frame = CGRect(x: bannerX, y: bannerY, width: bannerWidth * 2, height: bannerHeight * 2)
-//        imageView.contentMode = .scaleAspectFit
-//        
-//        navigationItem.titleView = imageView
-//    }
+    func navTitleImage() {
+        let navController = navigationController!
+        
+        self.navigationItem.setHidesBackButton(true, animated: false)
+        
+        let image = #imageLiteral(resourceName: "finalStache")
+        let imageView = UIImageView(image: image)
+        
+        let bannerWidth = navController.navigationBar.frame.size.width
+        let bannerHeight = navController.navigationBar.frame.size.height
+        
+        let bannerX = bannerWidth / 2 - image.size.width / 2
+        let bannerY = bannerHeight / 2 - image.size.height / 2
+        
+        imageView.frame = CGRect(x: bannerX, y: bannerY, width: bannerWidth * 2, height: bannerHeight * 2)
+        imageView.contentMode = .scaleAspectFit
+        
+        navigationItem.titleView = imageView
+    }
     
     
     func fetchImages(){
         PhotoController.sharedController.photos.removeAll()
         let predicate = NSPredicate(value: true)
-        //let sort = NSSortDescriptor(key: "foo", ascending: foo)
+        //let sort = NSSortDescriptor(key: "imageData", ascending: true)
         let query = CKQuery(recordType: "Photo", predicate: predicate)
+        //query.sortDescriptors = [sort]
         let operation = CKQueryOperation(query: query)
         //operation.desiredKeys = []
         operation.resultsLimit = 100
@@ -177,7 +181,7 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
                 }
             }
         }
-    CKContainer.default().publicCloudDatabase.add(operation)
+        CKContainer.default().publicCloudDatabase.add(operation)
     }
     
     
@@ -188,7 +192,7 @@ class StashImagesViewController: UIViewController, UICollectionViewDelegate, UIC
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         print("This is how many photos are in the album \(String(describing: PhotoController.sharedController.photos.count))")
-        return PhotoController.sharedController.photos.count ?? 0
+        return PhotoController.sharedController.photos.count
     }
     
     

@@ -12,7 +12,7 @@ import CloudKit
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var photoAlbums = [PhotoAlbum]()
+    //var photoAlbums = [PhotoAlbum]()
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -22,21 +22,21 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //tableView.reloadData()
-        //navTitleImage()
-        self.navigationItem.setHidesBackButton(true, animated: false)
+        fetchAlbums()
+        navTitleImage()
     }
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupView()
+    }
+    
+    func setupView(){
         guard let currentUser = UserController.sharedController.currentUser else {return}
         CKContainer.default()
-        fetchAlbums()
-        // tableView.clipsToBounds = true
-        // tableView.layer.cornerRadius = 20
+        self.navigationItem.setHidesBackButton(true, animated: false)
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
-        //navTitleImage()
         print("this is the current user- \(currentUser.username)")
     }
     
@@ -84,27 +84,27 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         CKContainer.default().publicCloudDatabase.add(operation)
     }
     
-    // -------------------------------------------------
-    // MARK: - Mustache title image function
-    // -------------------------------------------------
+//     -------------------------------------------------
+//     MARK: - Mustache title image function
+//     -------------------------------------------------
     
-    //    func navTitleImage() {
-    //        let navController = navigationController!
-    //
-    //        let image = #imageLiteral(resourceName: "finalStache")
-    //        let imageView = UIImageView(image: image)
-    //
-    //        let bannerWidth = navController.navigationBar.frame.size.width
-    //        let bannerHeight = navController.navigationBar.frame.size.height
-    //
-    //        let bannerX = bannerWidth / 2 - image.size.width / 2
-    //        let bannerY = bannerHeight / 2 - image.size.height / 2
-    //
-    //        imageView.frame = CGRect(x: bannerX, y: bannerY, width: bannerWidth * 2, height: bannerHeight * 2)
-    //        imageView.contentMode = .scaleAspectFit
-    //
-    //        navigationItem.titleView = imageView
-    //    }
+        func navTitleImage() {
+            let navController = navigationController!
+    
+            let image = #imageLiteral(resourceName: "finalStache")
+            let imageView = UIImageView(image: image)
+    
+            let bannerWidth = navController.navigationBar.frame.size.width
+            let bannerHeight = navController.navigationBar.frame.size.height
+    
+            let bannerX = bannerWidth / 2 - image.size.width / 2
+            let bannerY = bannerHeight / 2 - image.size.height / 2
+    
+            imageView.frame = CGRect(x: bannerX, y: bannerY, width: bannerWidth * 2, height: bannerHeight * 2)
+            imageView.contentMode = .scaleAspectFit
+    
+            navigationItem.titleView = imageView
+        }
     
     
     // -------------------------------------------------

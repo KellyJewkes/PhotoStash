@@ -96,6 +96,7 @@ class DetailImageViewController: UIViewController {
             })
             
             self.navigationController?.popViewController(animated: true)
+
         })
         
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
